@@ -11,6 +11,10 @@ body {
   font-display: swap;
 }
 
+a {
+  @apply text-link;
+}
+
 .myTheme {
   @apply bg-background text-text;
 }
@@ -103,4 +107,8 @@ body {
       }
     }
   }
+}
+
+.button {
+  @apply px-4 py-2 rounded;
 }
