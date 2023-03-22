@@ -7,26 +7,24 @@ module.exports = {
   plugins: [
     createThemes({
       light: {
-        primary: '#B35A1E',
-        secondary: '#704214',
-        accent: '#F7A82C',
+        primary: '#5E97D1',
+        secondary: '#8ED96A',
+        accent: '#F0F0F0',
         background: '#fff',
         text: '#333',
-        link: '#4C2C1D',
-        success: '#28a745',
-        error: '#ffc107',
-        warning: '#dc3545'
-      },
-      dark: {
-        primary: '#DAA520',
-        secondary: '#CD853F',
-        accent: '#FFD700',
-        background: '#333',
-        text: '#fff',
-        link: '#F5DEB3',
         success: '#FFD700',
         error: '#FF5733',
         warning: '#FFA500'
+      },
+      dark: {
+        primary: '#254476',
+        secondary: '#74BE3E',
+        accent: '#292929',
+        background: '#1E1E1E',
+        text: '#F0F0F0',
+        success: '#28a745',
+        error: '#ffc107',
+        warning: '#dc3545'
       }
     })
   ]

@@ -12,7 +12,7 @@ body {
 }
 
 a {
-  @apply text-link;
+  @apply text-primary hover:text-secondary;
 }
 
 .myTheme {
@@ -111,4 +111,8 @@ a {
 
 .button {
   @apply px-4 py-2 rounded;
+}
+
+input[type='text'] {
+  @apply border border-primary rounded outline-none focus:border-secondary bg-accent text-text px-2 py-1;
 }
