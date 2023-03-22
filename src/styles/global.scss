@@ -84,10 +84,6 @@ body {
   }
 }
 
-.btn {
-  @apply bg-primary px-4 py-2 rounded hover:bg-complementary-1 transition-all duration-200 ease-out;
-}
-
 .pagination {
   @apply mt-8 flex justify-center;
   li {
@@ -103,7 +99,7 @@ body {
     }
     &.selected {
       a {
-        @apply bg-primary text-neutral-2;
+        @apply bg-primary;
       }
     }
   }
