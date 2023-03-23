@@ -8,7 +8,7 @@ export default function NavLink({ title, url, child }: NavItem) {
     <li className="relative z-10 w-full p-4 group max-w-[20%]">
       <Link
         to={url}
-        className="block text-lg text-center uppercase text-text group-hover:text-primary">
+        className="block font-bold text-center uppercase text-text group-hover:text-primary">
         {title}
       </Link>
       {child && (

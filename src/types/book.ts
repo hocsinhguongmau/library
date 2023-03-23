@@ -1,12 +1,16 @@
+type BookStatus = 'available' | 'borrowed'
+
 export interface iBook {
+  _id: number
   ISBN: string
   title: string
   description: string
-  publisher: string
-  authors: string
-  status: 'available' | 'borrowed'
-  borrowerId: string
+  publisherId: number
+  authorsId: number[]
+  categoriesId: number[]
+  status: BookStatus
+  borrowerId: number
   publishedDate: string
-  borrowDate: string
-  returnDate: string
+  borrowDate: string | null
+  returnDate: string | null
 }

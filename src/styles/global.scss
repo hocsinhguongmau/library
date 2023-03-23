@@ -114,5 +114,5 @@ a {
 }
 
 input[type='text'] {
-  @apply border border-primary rounded outline-none focus:border-secondary bg-accent text-text px-2 py-1;
+  @apply border border-primary outline-none focus:border-secondary bg-accent text-text px-2 py-2;
 }
