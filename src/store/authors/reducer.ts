@@ -1,32 +1,27 @@
-import { iBook } from '@/types/Book'
-import {
-  DataAction,
-  GET_BOOK_DETAIL_FAILURE,
-  GET_BOOK_DETAIL_REQUEST,
-  GET_BOOK_DETAIL_SUCCESS
-} from './action'
+import { iAuthor } from '@/types'
+import { DataAction, GET_AUTHORS_FAILURE, GET_AUTHORS_REQUEST, GET_AUTHORS_SUCCESS } from './action'
 
 const initialState: DataState = {
-  data: null,
+  data: [],
   isLoading: false,
   error: null
 }
 
 export interface DataState {
-  data: iBook | null
+  data: iAuthor[]
   isLoading: boolean
   error: string | null
 }
 
-export const bookDetailReducer = (state = initialState, action: DataAction): DataState => {
+export const authorsReducer = (state = initialState, action: DataAction): DataState => {
   switch (action.type) {
-    case GET_BOOK_DETAIL_REQUEST:
+    case GET_AUTHORS_REQUEST:
       return {
         ...state,
         isLoading: true,
         error: null
       }
-    case GET_BOOK_DETAIL_SUCCESS:
+    case GET_AUTHORS_SUCCESS:
       if ('payload' in action) {
         return {
           ...state,
@@ -35,7 +30,7 @@ export const bookDetailReducer = (state = initialState, action: DataAction): Dat
         }
       }
       return state
-    case GET_BOOK_DETAIL_FAILURE:
+    case GET_AUTHORS_FAILURE:
       if ('payload' in action) {
         return {
           ...state,

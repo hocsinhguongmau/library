@@ -4,6 +4,7 @@ export interface iBook {
   _id: number
   ISBN: string
   title: string
+  picture: string
   description: string
   publisherId: number
   authorsId: number[]

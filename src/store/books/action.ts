@@ -1,4 +1,4 @@
-import { iBook } from '@/types/Book'
+import { iBook } from '@/types'
 
 export const GET_BOOKS_REQUEST = 'GET_BOOKS_REQUEST'
 export const GET_BOOKS_SUCCESS = 'GET_BOOKS_SUCCESS'
