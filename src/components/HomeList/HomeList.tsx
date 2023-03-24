@@ -1,18 +1,19 @@
 import { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+
+import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 
-import { getBooksRequest } from '@/store/books/fetching/fetchingAction'
-import { RootState } from '@/store/rootReducer'
+import { fetchBooks } from '@/redux/features/book/bookSlice'
+import { RootState, useAppDispatch } from '@/redux/store'
 
 export default function HomeList() {
-  const dispatch = useDispatch()
+  const dispatch = useAppDispatch()
+  const books = useSelector((state: RootState) => state.books.books)
+  const status = useSelector((state: RootState) => state.books.status)
 
   useEffect(() => {
-    dispatch(getBooksRequest())
-  }, [dispatch])
-
-  const { data, isLoading } = useSelector((state: RootState) => state.books)
+    dispatch(fetchBooks())
+  }, [])
 
   return (
     <section>
@@ -22,8 +23,8 @@ export default function HomeList() {
           Available to download and stream
         </h3>
         <div className="grid grid-cols-4 gap-8 mt-8">
-          {isLoading ? <span>Loading...</span> : null}
-          {data.slice(0, 4).map((book) => (
+          {status === 'loading' ? <span>Loading...</span> : null}
+          {books.slice(0, 4).map((book) => (
             <div key={book.id}>
               <Link to={`book/${book.id}`} className="block px-4">
                 <img

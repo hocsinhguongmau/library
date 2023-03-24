@@ -3,9 +3,9 @@ import ReactDOM from 'react-dom/client'
 import { BrowserRouter } from 'react-router-dom'
 import { Provider } from 'react-redux'
 
-import store from '@/store/configureStore'
 import Routes from '@/routes/Routes'
 import Layout from '@/components/Layout/Layout'
+import store from './redux/store'
 
 import '@/styles/global.scss'
 

@@ -2,7 +2,7 @@ type BookStatus = 'available' | 'borrowed'
 
 export interface iBook {
   id: number
-  ISBN: string
+  isbn: string
   title: string
   picture: string
   description: string
@@ -10,7 +10,7 @@ export interface iBook {
   authorsId: number[]
   categoriesId: number[]
   status: BookStatus
-  borrowerId: number
+  borrowerId?: number
   publishedDate: string
   borrowDate: string | null
   returnDate: string | null
