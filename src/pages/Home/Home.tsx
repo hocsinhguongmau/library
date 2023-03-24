@@ -7,6 +7,7 @@ import { addNewBook } from '@/redux/features/book/addBookSlice'
 import { useAppDispatch } from '@/redux/store'
 import { removeBook } from '@/redux/features/book/removeBookSlice'
 import { updateBook } from '@/redux/features/book/updateBookSlice'
+import { fetchBooks } from '@/redux/features/book/bookSlice'
 
 export default function Home() {
   const dispatch = useAppDispatch()
@@ -40,16 +41,19 @@ export default function Home() {
     returnDate: null
   }
 
-  const handleAddBook = () => {
-    dispatch(addNewBook(newBook))
+  const handleAddBook = async () => {
+    await dispatch(addNewBook(newBook))
+    dispatch(fetchBooks())
   }
 
-  const handleRemoveBook = () => {
-    dispatch(removeBook(1))
+  const handleRemoveBook = async () => {
+    await dispatch(removeBook(1))
+    dispatch(fetchBooks())
   }
 
-  const handleUpdateBook = () => {
-    dispatch(updateBook({ id: 1, updatedBook: newBook2 }))
+  const handleUpdateBook = async () => {
+    await dispatch(updateBook({ id: 1, updatedBook: newBook2 }))
+    dispatch(fetchBooks())
   }
 
   return (

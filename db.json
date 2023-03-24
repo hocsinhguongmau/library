@@ -257,32 +257,10 @@
   ],
   "books": [
     {
-      "id": 2,
-      "picture": "https://picsum.photos/id/3/200/300.webp",
+      "id": 1,
+      "picture": "https://picsum.photos/id/2/200/300.webp",
       "isbn": "9789-9-0-9",
       "title": "ffff",
-      "description": "bbb.",
-      "publisherId": 7,
-      "authorsId": [
-        9,
-        25,
-        14
-      ],
-      "categoriesId": [
-        3,
-        3,
-        3
-      ],
-      "status": "available",
-      "publishedDate": "2010-05-05",
-      "borrowDate": null,
-      "returnDate": null
-    },
-    {
-      "id": 1,
-      "picture": "https://picsum.photos/id/6/200/300.webp",
-      "isbn": "9789-9-0-9",
-      "title": "gggg",
       "description": "bbb.",
       "publisherId": 7,
       "authorsId": [
