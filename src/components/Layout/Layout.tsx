@@ -1,8 +1,8 @@
-import Header from '@/components/Header'
-import Footer from '@/components/Footer'
 import { useSelector } from 'react-redux'
 
 import { ThemeState } from '@/store/themes/reducer'
+import Header from '@/components/Header'
+import Footer from '@/components/Footer'
 
 type Props = {
   children: React.ReactNode

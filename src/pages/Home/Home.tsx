@@ -1,9 +1,24 @@
 import { Link } from 'react-router-dom'
+
 import books from '@/data/books.json'
 import Welcome from '@/components/Welcome/Welcome'
 import Intro from '@/components/Intro/Intro'
+import { useDispatch, useSelector } from 'react-redux'
+import { useEffect } from 'react'
+import { getBooksRequest } from '@/store/books/action'
+import { RootState } from '@/store/rootReducer'
 
 export default function Home() {
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(getBooksRequest())
+  }, [dispatch])
+
+  const { data, isLoading } = useSelector((state: RootState) => state.books)
+
+  console.log(data)
+
   return (
     <>
       <Welcome />

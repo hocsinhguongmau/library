@@ -2,6 +2,7 @@ import { legacy_createStore as createStore, applyMiddleware, compose } from 'red
 import createSagaMiddleware from 'redux-saga'
 import { save, load } from 'redux-localstorage-simple'
 import rootReducer from './rootReducer'
+import rootSaga from './rootSaga'
 
 declare global {
   interface Window {
@@ -21,5 +22,6 @@ const composeEnhancers =
 const enhancer = composeEnhancers(applyMiddleware(...middleware))
 
 const store = createStore(rootReducer, load(), enhancer)
+sagaMiddleware.run(rootSaga)
 
 export default store
