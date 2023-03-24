@@ -1,5 +1,10 @@
 import { iBook } from '@/types'
-import { DataAction, GET_BOOKS_FAILURE, GET_BOOKS_REQUEST, GET_BOOKS_SUCCESS } from './action'
+import {
+  DataAction,
+  GET_BOOKS_FAILURE,
+  GET_BOOKS_REQUEST,
+  GET_BOOKS_SUCCESS
+} from './fetchingAction'
 
 const initialState: DataState = {
   data: [],
@@ -13,7 +18,7 @@ export interface DataState {
   error: string | null
 }
 
-export const booksReducer = (state = initialState, action: DataAction): DataState => {
+export const fetchingBooksReducer = (state = initialState, action: DataAction): DataState => {
   switch (action.type) {
     case GET_BOOKS_REQUEST:
       return {

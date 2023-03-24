@@ -1,6 +1,6 @@
 import { call, put, fork, takeLatest } from 'redux-saga/effects'
 
-import { GET_AUTHORS_REQUEST, getAuthorsFailure, getAuthorsSuccess } from './action'
+import { GET_AUTHORS_REQUEST, getAuthorsFailure, getAuthorsSuccess } from './fetchingAction'
 import { fetchAllAuthors } from '@/utils/backend-service'
 import { iAuthor } from '@/types'
 
@@ -17,6 +17,6 @@ function* watchGetAuthorsRequest() {
   yield takeLatest(GET_AUTHORS_REQUEST, getAuthors)
 }
 
-const authorsSagas = [fork(watchGetAuthorsRequest)]
+const fetchingAuthorsSagas = [fork(watchGetAuthorsRequest)]
 
-export default authorsSagas
+export default fetchingAuthorsSagas

@@ -2,7 +2,7 @@ import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 
-import { getBooksRequest } from '@/store/books/action'
+import { getBooksRequest } from '@/store/books/fetching/fetchingAction'
 import { RootState } from '@/store/rootReducer'
 
 export default function HomeList() {
@@ -24,8 +24,8 @@ export default function HomeList() {
         <div className="grid grid-cols-4 gap-8 mt-8">
           {isLoading ? <span>Loading...</span> : null}
           {data.slice(0, 4).map((book) => (
-            <div key={book._id}>
-              <Link to={`book/${book._id}`} className="block px-4">
+            <div key={book.id}>
+              <Link to={`book/${book.id}`} className="block px-4">
                 <img
                   src={book.picture}
                   alt={book.title}
@@ -35,7 +35,7 @@ export default function HomeList() {
                 />
               </Link>
               <h4 className="mt-4 text-xl font-bold text-center capitalize">
-                <Link to={`book/${book._id}`}>{book.title}</Link>
+                <Link to={`book/${book.id}`}>{book.title}</Link>
               </h4>
               <h4 className="italic text-center">
                 <Link className="capitalize text-secondary" to="/">

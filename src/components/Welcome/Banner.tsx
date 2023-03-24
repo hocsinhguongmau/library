@@ -8,7 +8,7 @@ export default function Banner() {
   return (
     <Slider {...bannerSettings} className="banner">
       {banners.map((banner) => (
-        <Link to={banner.url} key={banner._id} target="_blank">
+        <Link to={banner.url} key={banner.id} target="_blank">
           <img
             src={banner.picture}
             alt={banner.title}

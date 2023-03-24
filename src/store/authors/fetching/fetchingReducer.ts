@@ -1,10 +1,10 @@
-import { iPublisher } from '@/types'
+import { iAuthor } from '@/types'
 import {
   DataAction,
-  GET_PUBLISHERS_FAILURE,
-  GET_PUBLISHERS_REQUEST,
-  GET_PUBLISHERS_SUCCESS
-} from './action'
+  GET_AUTHORS_FAILURE,
+  GET_AUTHORS_REQUEST,
+  GET_AUTHORS_SUCCESS
+} from './fetchingAction'
 
 const initialState: DataState = {
   data: [],
@@ -13,20 +13,20 @@ const initialState: DataState = {
 }
 
 export interface DataState {
-  data: iPublisher[]
+  data: iAuthor[]
   isLoading: boolean
   error: string | null
 }
 
-export const publishersReducer = (state = initialState, action: DataAction): DataState => {
+export const fetchingAuthorsReducer = (state = initialState, action: DataAction): DataState => {
   switch (action.type) {
-    case GET_PUBLISHERS_REQUEST:
+    case GET_AUTHORS_REQUEST:
       return {
         ...state,
         isLoading: true,
         error: null
       }
-    case GET_PUBLISHERS_SUCCESS:
+    case GET_AUTHORS_SUCCESS:
       if ('payload' in action) {
         return {
           ...state,
@@ -35,7 +35,7 @@ export const publishersReducer = (state = initialState, action: DataAction): Dat
         }
       }
       return state
-    case GET_PUBLISHERS_FAILURE:
+    case GET_AUTHORS_FAILURE:
       if ('payload' in action) {
         return {
           ...state,

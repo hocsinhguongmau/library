@@ -1,16 +1,16 @@
 import { combineReducers } from 'redux'
 
-import { publishersReducer } from './publishers/reducer'
-import { authorsReducer } from './authors/reducer'
+import { fetchingPublishersReducer } from './publishers/fetching/fetchingReducer'
+import { fetchingBookDetailReducer } from './bookDetail/fetching/fetchingReducer'
+import { fetchingBooksReducer } from './books/fetching/fetchingReducer'
+import { fetchingAuthorsReducer } from './authors/fetching/fetchingReducer'
 import themeReducer from './themes/reducer'
-import { booksReducer } from './books/reducer'
-import { bookDetailReducer } from './bookDetail/reducer'
 
 const rootReducer = combineReducers({
-  books: booksReducer,
-  bookDetail: bookDetailReducer,
-  authors: authorsReducer,
-  publishers: publishersReducer,
+  books: fetchingBooksReducer,
+  bookDetail: fetchingBookDetailReducer,
+  authors: fetchingAuthorsReducer,
+  publishers: fetchingPublishersReducer,
   theme: themeReducer
 })
 

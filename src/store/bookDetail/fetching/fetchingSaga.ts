@@ -6,7 +6,7 @@ import {
   GET_BOOK_DETAIL_REQUEST,
   getBookDetailFailure,
   getBookDetailSuccess
-} from './action'
+} from './fetchingAction'
 import { iBook } from '@/types'
 
 function* getBookDetail(action: FetchBookDetailRequestAction) {
@@ -22,6 +22,6 @@ function* watchGetBookDetailRequest() {
   yield takeLatest(GET_BOOK_DETAIL_REQUEST, getBookDetail)
 }
 
-const bookDetailSagas = [fork(watchGetBookDetailRequest)]
+const fetchingBookDetailSagas = [fork(watchGetBookDetailRequest)]
 
-export default bookDetailSagas
+export default fetchingBookDetailSagas

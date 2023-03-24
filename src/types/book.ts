@@ -1,7 +1,7 @@
 type BookStatus = 'available' | 'borrowed'
 
 export interface iBook {
-  _id: number
+  id: number
   ISBN: string
   title: string
   picture: string

@@ -1,7 +1,11 @@
 import { call, put, fork, takeLatest } from 'redux-saga/effects'
 
 import { iPublisher } from '@/types'
-import { GET_PUBLISHERS_REQUEST, getPublishersFailure, getPublishersSuccess } from './action'
+import {
+  GET_PUBLISHERS_REQUEST,
+  getPublishersFailure,
+  getPublishersSuccess
+} from './fetchingAction'
 import { fetchAllPublishers } from '@/utils/backend-service'
 
 function* getPublishers() {
@@ -17,6 +21,6 @@ function* watchGetPublishersRequest() {
   yield takeLatest(GET_PUBLISHERS_REQUEST, getPublishers)
 }
 
-const publishersSagas = [fork(watchGetPublishersRequest)]
+const fetchingPublishersSagas = [fork(watchGetPublishersRequest)]
 
-export default publishersSagas
+export default fetchingPublishersSagas
