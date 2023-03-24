@@ -1,74 +1,13 @@
-import Banner from '@/components/Banner'
-import Event from '@/components/Event'
 import { Link } from 'react-router-dom'
-import { ImLocation } from 'react-icons/im'
-import { AiFillIdcard, AiFillSchedule } from 'react-icons/ai'
 import books from '@/data/books.json'
+import Welcome from '@/components/Welcome/Welcome'
+import Intro from '@/components/Intro/Intro'
 
 export default function Home() {
   return (
     <>
-      <section>
-        <div className="section-wrapper">
-          <Link to="/">
-            <img
-              src="/assets/images/logo.png"
-              className="mx-auto"
-              width={121}
-              height={141}
-              alt="Logo"
-            />
-          </Link>
-          <h1 className="mt-8 text-4xl text-center uppercase text-primary">
-            Welcome to the <span className="text-secondary">Public Library!</span>
-          </h1>
-          <div className="grid grid-cols-12 gap-4 mt-8 ">
-            <div className="col-span-7">
-              <Banner />
-            </div>
-            <div className="col-span-5">
-              <Event />
-            </div>
-          </div>
-        </div>
-      </section>
-      <section>
-        <div className="section-wrapper">
-          <div className="flex justify-center gap-4">
-            <div>
-              <h2 className="text-2xl text-primary">
-                Public Library <br />
-                <span className="text-secondary">EDUCATES, ENTERTAINS, & EMPOWERS</span>
-                <br /> Our community.
-              </h2>
-              <p className="mt-4 text-xl">
-                We offer a range of traditional and innovative library resources - physical and
-                downloadable books and audiobooks, computers, WiFi, meeting rooms, databases,
-                research tools, storytimes, and tutoring - plus bike repair stations, a makerspace,
-                museum passes, and a variety of classes.
-              </p>
-            </div>
-            <img
-              src="/assets/images/map.png"
-              alt="Locations"
-              width={447}
-              height={280}
-              className="shrink-0 grow-0"
-            />
-          </div>
-          <div className="flex justify-center gap-4 mt-8">
-            <Link to="/" className="button button-filled button-large">
-              <ImLocation /> Find your branch
-            </Link>
-            <Link to="/" className="button button-filled button-large">
-              <AiFillIdcard /> Get a card
-            </Link>
-            <Link to="/" className="button button-filled button-large">
-              <AiFillSchedule /> See our event
-            </Link>
-          </div>
-        </div>
-      </section>
+      <Welcome />
+      <Intro />
       <section>
         <div className="section-wrapper">
           <h2 className="text-2xl text-center uppercase text-primary">BOOKS, MAGAZINES & MOVIES</h2>
