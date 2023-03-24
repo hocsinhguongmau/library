@@ -12,8 +12,8 @@ export const fetchCountryDetail = async (name: string) => {
   return jsonResult[0]
 }
 
-export const fetchCountriesByKeyword = async (keyword: string) => {
-  const result = await fetch(`${BACKEND_API_URL}/name/${keyword}`)
+export const fetchAllBooks = async () => {
+  const result = await fetch(`${BACKEND_API_URL}/books`)
   const jsonResult = await result.json()
   return jsonResult
 }

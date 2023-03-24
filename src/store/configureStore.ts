@@ -12,7 +12,7 @@ declare global {
 
 const sagaMiddleware = createSagaMiddleware()
 
-const middleware = [sagaMiddleware, save()]
+const middleware = [sagaMiddleware, save({ states: ['theme'] })]
 
 const composeEnhancers =
   typeof window === 'object' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
@@ -21,7 +21,7 @@ const composeEnhancers =
 
 const enhancer = composeEnhancers(applyMiddleware(...middleware))
 
-const store = createStore(rootReducer, load(), enhancer)
+const store = createStore(rootReducer, load({ states: ['theme'] }), enhancer)
 sagaMiddleware.run(rootSaga)
 
 export default store
