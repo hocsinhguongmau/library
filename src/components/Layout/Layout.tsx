@@ -14,7 +14,7 @@ export default function Layout({ children }: Props) {
   return (
     <div className="min-h-screen myTheme" data-theme={theme}>
       <Header />
-      <main role="main" className="container py-8 mx-auto" aria-label="Main Content">
+      <main role="main" aria-label="Main Content">
         {children}
       </main>
       <Footer />
