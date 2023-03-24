@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { AiFillFacebook, AiFillGithub, AiFillTwitterCircle } from 'react-icons/ai'
 
 export default function Footer() {
   return (
@@ -15,7 +16,7 @@ export default function Footer() {
                 rel="noopener"
                 aria-label="Visit us on Facebook">
                 <span className="sr-only">Facebook</span>
-                <i className="fab fa-facebook"></i>
+                <AiFillFacebook />
               </Link>
             </li>
             <li>
@@ -26,7 +27,7 @@ export default function Footer() {
                 rel="noopener"
                 aria-label="Follow us on Twitter">
                 <span className="sr-only">Twitter</span>
-                <i className="fab fa-twitter"></i>
+                <AiFillTwitterCircle />
               </Link>
             </li>
             <li>
@@ -37,7 +38,7 @@ export default function Footer() {
                 rel="noopener"
                 aria-label="Check our code on Github">
                 <span className="sr-only">GitHub</span>
-                <i className="fab fa-github"></i>
+                <AiFillGithub />
               </Link>
             </li>
           </ul>
