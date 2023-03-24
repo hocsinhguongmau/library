@@ -1,6 +1,7 @@
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
+
 import { iBook } from '@/types'
 import { addBookFunction } from '@/utils/backend-service/books'
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 
 interface AddBookState {
   books: iBook[]

@@ -12,12 +12,25 @@ export default function Home() {
   const dispatch = useAppDispatch()
 
   const newBook: iBook = {
-    id: 111,
-    picture: 'https://picsum.photos/id/1/200/300.webp',
+    id: 1,
+    picture: 'https://picsum.photos/id/2/200/300.webp',
     isbn: '9789-9-0-9',
-    title: 'irure sint laborum',
-    description:
-      'Ut sint dolor commodo sit exercitation do incididunt sit non proident. Sint culpa anim cillum aliqua minim.',
+    title: 'ffff',
+    description: 'bbb.',
+    publisherId: 7,
+    authorsId: [9, 25, 14],
+    categoriesId: [3, 3, 3],
+    status: 'available',
+    publishedDate: '2010-05-05',
+    borrowDate: null,
+    returnDate: null
+  }
+  const newBook2: iBook = {
+    id: 2,
+    picture: 'https://picsum.photos/id/6/200/300.webp',
+    isbn: '9789-9-0-9',
+    title: 'gggg',
+    description: 'bbb.',
     publisherId: 7,
     authorsId: [9, 25, 14],
     categoriesId: [3, 3, 3],
@@ -36,7 +49,7 @@ export default function Home() {
   }
 
   const handleUpdateBook = () => {
-    dispatch(updateBook({ id: 1, updatedBook: newBook }))
+    dispatch(updateBook({ id: 1, updatedBook: newBook2 }))
   }
 
   return (

@@ -9,21 +9,21 @@ export const fetchAllBooks = async () => {
 }
 
 export const addBookFunction = async (book: iBook) => {
-  // const response = await axios.post(`${BACKEND_API_URL}/books`, book)
+  const response = await axios.post(`${BACKEND_API_URL}/books`, book)
   console.log('book is added', book)
-  // return response.data
+  return response.data
 }
 
 export const updateBookFunction = async (id: number, book: iBook) => {
-  // const response = await axios.put(`${BACKEND_API_URL}/books/${id}`, book)
+  const response = await axios.put(`${BACKEND_API_URL}/books/${id}`, book)
   console.log(`book ${id} is updated`, book)
-  // return response.data
+  return response.data
 }
 
 export const removeBookFunction = async (id: number) => {
-  // const response = await axios.delete(`${BACKEND_API_URL}/books/${id}`)
+  const response = await axios.delete(`${BACKEND_API_URL}/books/${id}`)
   console.log(`book ${id} is deleted`)
-  // return response.data
+  return response.data
 }
 
 export const fetchBookDetail = async (id: number) => {

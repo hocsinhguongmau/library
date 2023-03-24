@@ -1,6 +1,7 @@
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
+
 import { iBook } from '@/types'
 import { removeBookFunction } from '@/utils/backend-service'
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 
 interface RemoveBookState {
   books: iBook[]

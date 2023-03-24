@@ -38,9 +38,9 @@ const updateBookSlice = createSlice({
       })
       .addCase(updateBook.fulfilled, (state, action) => {
         state.status = 'succeeded'
-        state.books = state.books.map((book) =>
-          book.id === action.payload.id ? action.payload : book
-        )
+        // state.books = state.books.map((book) =>
+        //   book.id === action.payload.id ? action.payload : book
+        // )
       })
       .addCase(updateBook.rejected, (state, action) => {
         state.status = 'failed'
