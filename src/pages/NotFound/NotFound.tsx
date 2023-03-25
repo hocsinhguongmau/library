@@ -22,7 +22,7 @@ export default function NotFound() {
         Sorry, we could not find the page you are looking for{' '}
       </h3>
       <p className="mt-10 text-center">
-        <Link to="/" className="btn w-[200px]" aria-labelledby="back-to-home">
+        <Link to="/" className="button button-filled" aria-labelledby="back-to-home">
           <span id="back-to-home">Back to home</span>
         </Link>
       </p>
