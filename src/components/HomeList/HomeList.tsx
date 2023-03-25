@@ -47,7 +47,7 @@ export default function HomeList() {
           ))}
         </div>
         <div className="mt-4 text-center">
-          <Link to="/" className="button button-outlined">
+          <Link to="/catalog" className="button button-outlined">
             See more
           </Link>
         </div>

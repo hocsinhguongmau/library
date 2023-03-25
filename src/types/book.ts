@@ -7,8 +7,8 @@ export interface iBook {
   picture: string
   description: string
   publisherId: number
-  authorsId: number[]
-  categoriesId: number[]
+  authorsId: number
+  categoriesId: number
   status: BookStatus
   borrowerId?: number
   publishedDate: string

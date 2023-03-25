@@ -13,6 +13,7 @@ import Layout from '@/components/Layout/Layout'
 const Routes = () => {
   return (
     <AppRoutes>
+      <Route path="/admin" element={<Admin />} />
       <Route
         path="/"
         element={
@@ -21,7 +22,7 @@ const Routes = () => {
           </Layout>
         }
       />
-      <Route path="/admin" element={<Admin />} />
+
       <Route
         path="/catalog"
         element={
