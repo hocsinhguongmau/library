@@ -2,7 +2,6 @@ import { iBook } from '@/types'
 import { BACKEND_API_URL } from '@/constants'
 import axios from 'axios'
 
-//Books function
 export const fetchAllBooks = async () => {
   const response = await axios.get(`${BACKEND_API_URL}/books`)
   return response.data
@@ -24,9 +23,4 @@ export const removeBookFunction = async (id: number) => {
   const response = await axios.delete(`${BACKEND_API_URL}/books/${id}`)
   console.log(`book ${id} is deleted`)
   return response.data
-}
-
-export const fetchBookDetail = async (id: number) => {
-  const response = await axios.get(`${BACKEND_API_URL}/books/${id}`)
-  return response.data[0]
 }

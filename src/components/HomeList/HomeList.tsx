@@ -2,7 +2,7 @@ import { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 
-import { fetchBooks } from '@/redux/features/book/bookSlice'
+import { fetchBooks } from '@/redux/features/book/booksSlice'
 import { RootState, useAppDispatch } from '@/redux/store'
 
 export default function HomeList() {

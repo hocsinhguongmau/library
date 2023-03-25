@@ -1,6 +1,6 @@
-import { fetchAllBooks } from '@/utils/backend-service/books'
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 
+import { fetchAllBooks } from '@/utils/backend-service'
 import { iBook } from '@/types'
 
 interface BooksState {
