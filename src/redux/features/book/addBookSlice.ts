@@ -9,22 +9,19 @@ interface AddBookState {
   error: string | null
 }
 
-const initialState: AddBookState = {
+const initialState = {
   books: [],
   status: 'idle',
   error: null
-}
+} as AddBookState
 
-export const addNewBook = createAsyncThunk<iBook, iBook>(
-  'books/add',
-  async (newBook): Promise<any> => {
-    const addedBook = await addBookFunction(newBook)
-    return addedBook
-  }
-)
+export const addNewBook = createAsyncThunk<iBook[], iBook>('books/addNewBook', async (newBook) => {
+  const addedBook = await addBookFunction(newBook)
+  return addedBook
+})
 
 const addBookSlice = createSlice({
-  name: 'books',
+  name: 'addBook',
   initialState,
   reducers: {},
   extraReducers: (builder) => {
@@ -34,7 +31,7 @@ const addBookSlice = createSlice({
       })
       .addCase(addNewBook.fulfilled, (state, action) => {
         state.status = 'succeeded'
-        state.books.push(action.payload)
+        state.books = action.payload
       })
       .addCase(addNewBook.rejected, (state, action) => {
         state.status = 'failed'

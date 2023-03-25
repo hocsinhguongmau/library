@@ -20,9 +20,9 @@ const initialState: UpdateBookState = {
   error: null
 }
 
-export const updateBook = createAsyncThunk<iBook, UpdateBookData>(
+export const updateBook = createAsyncThunk<iBook[], UpdateBookData>(
   'books/update',
-  async ({ id, updatedBook }): Promise<any> => {
+  async ({ id, updatedBook }) => {
     const response = await updateBookFunction(id, updatedBook)
     return response
   }
@@ -39,9 +39,7 @@ const updateBookSlice = createSlice({
       })
       .addCase(updateBook.fulfilled, (state, action) => {
         state.status = 'succeeded'
-        // state.books = state.books.map((book) =>
-        //   book.id === action.payload.id ? action.payload : book
-        // )
+        state.books = action.payload
       })
       .addCase(updateBook.rejected, (state, action) => {
         state.status = 'failed'

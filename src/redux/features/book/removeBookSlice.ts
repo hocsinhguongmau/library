@@ -15,13 +15,10 @@ const initialState: RemoveBookState = {
   error: null
 }
 
-export const removeBook = createAsyncThunk<iBook, number>(
-  'books/remove',
-  async (id): Promise<any> => {
-    const removedBook = await removeBookFunction(id)
-    return removedBook
-  }
-)
+export const removeBook = createAsyncThunk<iBook[], number>('books/remove', async (id) => {
+  const removedBook = await removeBookFunction(id)
+  return removedBook
+})
 
 const removeBookSlice = createSlice({
   name: 'books',
@@ -34,7 +31,7 @@ const removeBookSlice = createSlice({
       })
       .addCase(removeBook.fulfilled, (state, action) => {
         state.status = 'succeeded'
-        state.books = state.books.filter((book) => book.id !== action.payload.id)
+        state.books = action.payload
       })
       .addCase(removeBook.rejected, (state, action) => {
         state.status = 'failed'

@@ -4,12 +4,14 @@ import HomeList from '@/components/HomeList/HomeList'
 import NewsLetter from '@/components/NewsLetter/NewsLetter'
 import { iBook } from '@/types'
 import { addNewBook } from '@/redux/features/book/addBookSlice'
-import { useAppDispatch } from '@/redux/store'
+import { RootState, useAppDispatch } from '@/redux/store'
 import { removeBook } from '@/redux/features/book/removeBookSlice'
 import { updateBook } from '@/redux/features/book/updateBookSlice'
+import { useSelector } from 'react-redux'
 
 export default function Home() {
   const dispatch = useAppDispatch()
+  const books = useSelector((state: RootState) => state.books.books)
 
   const newBook: iBook = {
     id: 2,

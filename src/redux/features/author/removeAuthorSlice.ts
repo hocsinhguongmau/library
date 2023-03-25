@@ -15,13 +15,10 @@ const initialState: RemoveAuthorState = {
   error: null
 }
 
-export const removeAuthor = createAsyncThunk<iAuthor, number>(
-  'authors/remove',
-  async (id): Promise<any> => {
-    const removedAuthor = await removeAuthorFunction(id)
-    return removedAuthor
-  }
-)
+export const removeAuthor = createAsyncThunk<iAuthor[], number>('authors/remove', async (id) => {
+  const removedAuthor = await removeAuthorFunction(id)
+  return removedAuthor
+})
 
 const removeAuthorSlice = createSlice({
   name: 'authors',
@@ -34,7 +31,7 @@ const removeAuthorSlice = createSlice({
       })
       .addCase(removeAuthor.fulfilled, (state, action) => {
         state.status = 'succeeded'
-        state.authors = state.authors.filter((author) => author.id !== action.payload.id)
+        state.authors = action.payload
       })
       .addCase(removeAuthor.rejected, (state, action) => {
         state.status = 'failed'

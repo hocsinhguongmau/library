@@ -20,9 +20,9 @@ const initialState: UpdateAuthorState = {
   error: null
 }
 
-export const updateAuthor = createAsyncThunk<iAuthor, UpdateAuthorData>(
+export const updateAuthor = createAsyncThunk<iAuthor[], UpdateAuthorData>(
   'authors/update',
-  async ({ id, updatedAuthor }): Promise<any> => {
+  async ({ id, updatedAuthor }) => {
     const response = await updateAuthorFunction(id, updatedAuthor)
     return response
   }
@@ -39,9 +39,7 @@ const updateAuthorSlice = createSlice({
       })
       .addCase(updateAuthor.fulfilled, (state, action) => {
         state.status = 'succeeded'
-        // state.authors = state.authors.map((author) =>
-        //   author.id === action.payload.id ? action.payload : author
-        // )
+        state.authors = action.payload
       })
       .addCase(updateAuthor.rejected, (state, action) => {
         state.status = 'failed'
