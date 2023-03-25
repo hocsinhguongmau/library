@@ -3,24 +3,25 @@ import { BACKEND_API_URL } from '@/constants'
 import axios from 'axios'
 
 export const fetchAllBooks = async () => {
-  const response = await axios.get(`${BACKEND_API_URL}/books`)
+  const response = await axios.get(`${BACKEND_API_URL}/books.json`)
   return response.data
 }
 
 export const addBookFunction = async (book: iBook) => {
-  const response = await axios.post(`${BACKEND_API_URL}/books`, book)
+  const response = await axios.post(`${BACKEND_API_URL}/books.json`, book)
   console.log('book is added', book)
   return response.data
 }
 
 export const updateBookFunction = async (id: number, book: iBook) => {
-  const response = await axios.put(`${BACKEND_API_URL}/books/${id}`, book)
+  const response = await axios.put(`${BACKEND_API_URL}/books.json`, book)
   console.log(`book ${id} is updated`, book)
   return response.data
 }
 
 export const removeBookFunction = async (id: number) => {
-  const response = await axios.delete(`${BACKEND_API_URL}/books/${id}`)
+  const response = await axios.delete(`${BACKEND_API_URL}/books.json`)
+  console.log(response.data)
   console.log(`book ${id} is deleted`)
   return response.data
 }

@@ -1,9 +1,10 @@
 import { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
+import { RootState, useAppDispatch } from '@/redux/store'
 
 import { fetchBooks } from '@/redux/features/book/booksSlice'
-import { RootState, useAppDispatch } from '@/redux/store'
+import Loading from '@/components/Loading'
 
 export default function HomeList() {
   const dispatch = useAppDispatch()
@@ -22,7 +23,7 @@ export default function HomeList() {
           Available to download and stream
         </h3>
         <div className="grid grid-cols-4 gap-8 mt-8">
-          {status === 'loading' ? <span>Loading...</span> : null}
+          {status === 'loading' ? <Loading /> : null}
           {books.slice(0, 4).map((book) => (
             <div key={book.id}>
               <Link to={`book/${book.id}`} className="block px-4">

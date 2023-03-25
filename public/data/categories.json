@@ -1,51 +1,51 @@
 [
   {
-    "_id": 1,
+    "id": 1,
     "title": "Fiction",
     "description": "Fictional stories and novels that are not based on real events or people. May include sub-genres such as romance, mystery, and science fiction."
   },
   {
-    "_id": 2,
+    "id": 2,
     "title": "Non-fiction",
     "description": "Books that are based on real events or people, such as biographies, history books, and self-help books."
   },
   {
-    "_id": 3,
+    "id": 3,
     "title": "Children's",
     "description": "Books that are written for children, typically up to the age of 12. May include picture books, chapter books, and middle-grade novels."
   },
   {
-    "_id": 4,
+    "id": 4,
     "title": "Young Adult",
     "description": "Books that are written for teenagers, typically between the ages of 12 and 18. May include coming-of-age stories, dystopian novels, and fantasy series."
   },
   {
-    "_id": 5,
+    "id": 5,
     "title": "Science Fiction",
     "description": "Books that are set in a speculative future or in alternative realities, often featuring advanced technology and space exploration."
   },
   {
-    "_id": 6,
+    "id": 6,
     "title": "Fantasy",
     "description": "Books that feature magical or supernatural elements, such as wizards, dragons, and mythical creatures."
   },
   {
-    "_id": 7,
+    "id": 7,
     "title": "Romance",
     "description": "Books that focus on romantic relationships, often with a happy ending. May include sub-genres such as historical romance and contemporary romance."
   },
   {
-    "_id": 8,
+    "id": 8,
     "title": "Mystery",
     "description": "Books that involve a crime or puzzle that needs to be solved. May include sub-genres such as detective fiction and thrillers."
   },
   {
-    "_id": 9,
+    "id": 9,
     "title": "Horror",
     "description": "Books that are intended to scare or unsettle the reader, often featuring supernatural or macabre elements."
   },
   {
-    "_id": 10,
+    "id": 10,
     "title": "Poetry",
     "description": "Books that contain poems, which are often characterized by their use of language, rhythm, and imagery."
   }

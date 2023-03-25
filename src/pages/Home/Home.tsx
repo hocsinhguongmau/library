@@ -7,13 +7,12 @@ import { addNewBook } from '@/redux/features/book/addBookSlice'
 import { useAppDispatch } from '@/redux/store'
 import { removeBook } from '@/redux/features/book/removeBookSlice'
 import { updateBook } from '@/redux/features/book/updateBookSlice'
-import { fetchBooks } from '@/redux/features/book/booksSlice'
 
 export default function Home() {
   const dispatch = useAppDispatch()
 
   const newBook: iBook = {
-    id: 1,
+    id: 2,
     picture: 'https://picsum.photos/id/2/200/300.webp',
     isbn: '9789-9-0-9',
     title: 'ffff',
@@ -30,7 +29,7 @@ export default function Home() {
     id: 2,
     picture: 'https://picsum.photos/id/6/200/300.webp',
     isbn: '9789-9-0-9',
-    title: 'gggg',
+    title: 'dddd',
     description: 'bbb.',
     publisherId: 7,
     authorsId: [9, 25, 14],
@@ -43,17 +42,14 @@ export default function Home() {
 
   const handleAddBook = async () => {
     await dispatch(addNewBook(newBook))
-    dispatch(fetchBooks())
   }
 
   const handleRemoveBook = async () => {
     await dispatch(removeBook(1))
-    dispatch(fetchBooks())
   }
 
   const handleUpdateBook = async () => {
-    await dispatch(updateBook({ id: 1, updatedBook: newBook2 }))
-    dispatch(fetchBooks())
+    await dispatch(updateBook({ id: 2, updatedBook: newBook2 }))
   }
 
   return (
