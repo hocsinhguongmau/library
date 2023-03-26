@@ -6,12 +6,27 @@ export interface iBook {
   title: string
   picture: string
   description: string
-  publisherId: number
-  authorsId: number
-  categoriesId: number
+  publisher: string
+  authors: string[]
+  categories: string[]
   status: BookStatus
   borrowerId?: number
   publishedDate: string
   borrowDate: string | null
   returnDate: string | null
+}
+
+export interface BooksState {
+  books: iBook[]
+  status: 'idle' | 'loading' | 'succeeded' | 'failed'
+  error: string | null
+}
+
+export interface SortOption {
+  field: keyof iBook
+  order: 'asc' | 'desc'
+}
+export interface SearchOption {
+  searchTerm: string
+  keysToSearch: (keyof iBook)[]
 }

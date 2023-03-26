@@ -1,9 +1,10 @@
-import { useEffect } from 'react'
+import { useCallback, useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { RootState, useAppDispatch } from '@/redux/store'
 
-import { fetchBooks } from '@/redux/features/book/booksSlice'
+import { RootState, useAppDispatch } from '@/redux/store'
+import { fetchBooks, searchBooks, sortBooks } from '@/redux/features/book/booksSlice'
+import { iBook } from '@/types'
 import Loading from '@/components/Loading'
 
 export default function HomeList() {
@@ -15,6 +16,25 @@ export default function HomeList() {
     dispatch(fetchBooks())
   }, [])
 
+  const handleSort = useCallback(
+    (field: keyof iBook, order: 'asc' | 'desc') => {
+      dispatch(sortBooks({ field, order }))
+    },
+    [dispatch]
+  )
+
+  const handleSearch = useCallback(
+    (searchTerm: string) => {
+      dispatch(
+        searchBooks({
+          searchTerm: searchTerm,
+          keysToSearch: ['title', 'authors', 'publisher', 'categories']
+        })
+      )
+    },
+    [dispatch]
+  )
+
   return (
     <section>
       <div className="section-wrapper">
@@ -22,8 +42,8 @@ export default function HomeList() {
         <h3 className="text-xl italic text-center text-secondary">
           Available to download and stream
         </h3>
+        {status === 'loading' ? <Loading classes="pt-8" /> : null}
         <div className="grid grid-cols-4 gap-8 mt-8">
-          {status === 'loading' ? <Loading /> : null}
           {books.slice(0, 4).map((book) => (
             <div key={book.id}>
               <Link to={`book/${book.id}`} className="block px-4">
@@ -50,6 +70,14 @@ export default function HomeList() {
           <Link to="/catalog" className="button button-outlined">
             See more
           </Link>
+        </div>
+        <div className="flex gap-8">
+          <button className="button button-filled" onClick={() => handleSort('title', 'asc')}>
+            Sort by Title (Ascending)
+          </button>
+          <button className="button button-filled" onClick={() => handleSort('title', 'desc')}>
+            Sort by Title (Descending)
+          </button>
         </div>
       </div>
     </section>

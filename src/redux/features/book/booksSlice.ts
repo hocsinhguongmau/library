@@ -1,13 +1,9 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
+import { PayloadAction, createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 
+import { sortArrayByField } from '@/utils/frontend-service/'
+import { filterArrayBySearchTerm } from '@/utils/frontend-service/'
 import { fetchAllBooks } from '@/utils/backend-service'
-import { iBook } from '@/types'
-
-interface BooksState {
-  books: iBook[]
-  status: 'idle' | 'loading' | 'succeeded' | 'failed'
-  error: string | null
-}
+import { BooksState, SearchOption, SortOption } from '@/types'
 
 const initialState: BooksState = {
   books: [],
@@ -23,7 +19,19 @@ export const fetchBooks = createAsyncThunk('books/fetchBooks', async () => {
 const booksSlice = createSlice({
   name: 'books',
   initialState,
-  reducers: {},
+  reducers: {
+    sortBooks(state, action: PayloadAction<SortOption>) {
+      const { field, order } = action.payload
+      sortArrayByField(state.books, field, order)
+    },
+    searchBooks(state, action: PayloadAction<SearchOption>) {
+      const { searchTerm, keysToSearch } = action.payload
+      state.books = filterArrayBySearchTerm(state.books, searchTerm, keysToSearch)
+    },
+    resetBooks(state) {
+      state.books = initialState.books
+    }
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchBooks.pending, (state) => {
@@ -39,5 +47,7 @@ const booksSlice = createSlice({
       })
   }
 })
+
+export const { sortBooks, searchBooks, resetBooks } = booksSlice.actions
 
 export default booksSlice.reducer
