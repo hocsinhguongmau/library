@@ -1,2 +1,35 @@
-export * from './sort'
-export * from './filter'
+export const filterArrayBySearchTerm = <T>(
+  array: T[],
+  searchTerm: string,
+  keysToSearch: (keyof T)[]
+): T[] => {
+  return array.filter((item) => {
+    for (const key of keysToSearch) {
+      const value = item[key]
+      if (value && value.toString().toLowerCase().includes(searchTerm.toLowerCase())) {
+        return true
+      }
+    }
+    return false
+  })
+}
+
+type OrderType = 'asc' | 'desc'
+
+export const sortArrayByField = <T, K extends keyof T>(data: T[], sortBy: K, order: OrderType) => {
+  return data.sort((a, b) => {
+    const aValue = a[sortBy]
+    const bValue = b[sortBy]
+    if (aValue === undefined || aValue === null) {
+      return order === 'asc' ? -1 : 1
+    } else if (bValue === undefined || bValue === null) {
+      return order === 'asc' ? 1 : -1
+    } else if (aValue < bValue) {
+      return order === 'asc' ? -1 : 1
+    } else if (aValue > bValue) {
+      return order === 'asc' ? 1 : -1
+    } else {
+      return 0
+    }
+  })
+}

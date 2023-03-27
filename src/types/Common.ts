@@ -3,3 +3,13 @@ export type NavItem = {
   url: string
   child?: NavItem[]
 }
+
+export interface SortOption<T> {
+  field: keyof T
+  order: 'asc' | 'desc'
+}
+
+export interface SearchOption<T> {
+  searchTerm: string
+  keysToSearch: (keyof T)[]
+}
