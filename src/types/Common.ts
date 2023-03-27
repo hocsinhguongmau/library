@@ -13,3 +13,7 @@ export interface SearchOption<T> {
   searchTerm: string
   keysToSearch: (keyof T)[]
 }
+export interface UpdateType<T> {
+  newData: Omit<T, 'id'>
+  id: string
+}

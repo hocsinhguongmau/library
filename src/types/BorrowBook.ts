@@ -1,7 +1,7 @@
 export interface BorrowBook {
-  borrowerId: number
-  userId: number
-  bookId: number
+  borrowerId: string
+  userId: string
+  bookId: string
   borrowDate: string
   returnDate: string
 }

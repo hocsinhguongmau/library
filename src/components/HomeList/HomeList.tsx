@@ -1,16 +1,33 @@
 import { useCallback, useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
+import { v4 as uuidv4 } from 'uuid'
 
 import { RootState, useAppDispatch } from '@/redux/store'
 import { fetchBooks, searchBooks, sortBooks } from '@/redux/features/book/booksSlice'
 import { iBook } from '@/types'
 import Loading from '@/components/Loading'
+import { addNewBook } from '@/redux/features/book/booksSlice'
+import BookListItem from '../BookListItem'
 
 export default function HomeList() {
   const dispatch = useAppDispatch()
   const books = useSelector((state: RootState) => state.books.books)
   const status = useSelector((state: RootState) => state.books.status)
+
+  const newBook: iBook = {
+    id: uuidv4(),
+    picture: 'https://picsum.photos/id/19/200/300.webp',
+    isbn: '9780-9-0-9',
+    title: 'exercitation incididunt commodo',
+    description:
+      'In esse adipisicing ad voluptate magna. Non mollit ut exercitation tempor ea irure dolore duis mollit.',
+    publisher: 6,
+    author: 12,
+    category: 4,
+    status: 'available',
+    publishedDate: '1980-10-25'
+  }
 
   useEffect(() => {
     dispatch(fetchBooks())
@@ -28,12 +45,15 @@ export default function HomeList() {
       dispatch(
         searchBooks({
           searchTerm: searchTerm,
-          keysToSearch: ['title', 'authors', 'publisher', 'categories']
+          keysToSearch: ['title']
         })
       )
     },
     [dispatch]
   )
+  const handleAddBook = (book: iBook) => {
+    dispatch(addNewBook(book))
+  }
 
   return (
     <section>
@@ -44,26 +64,8 @@ export default function HomeList() {
         </h3>
         {status === 'loading' ? <Loading classes="pt-8" /> : null}
         <div className="grid grid-cols-4 gap-8 mt-8">
-          {books.slice(0, 4).map((book) => (
-            <div key={book.id}>
-              <Link to={`book/${book.id}`} className="block px-4">
-                <img
-                  src={book.picture}
-                  alt={book.title}
-                  width={200}
-                  height={300}
-                  className="w-full"
-                />
-              </Link>
-              <h4 className="mt-4 text-xl font-bold text-center capitalize">
-                <Link to={`book/${book.id}`}>{book.title}</Link>
-              </h4>
-              <h4 className="italic text-center">
-                <Link className="capitalize text-secondary" to="/">
-                  Author
-                </Link>
-              </h4>
-            </div>
+          {books.map((book) => (
+            <BookListItem {...book} key={book.id} />
           ))}
         </div>
         <div className="mt-4 text-center">
@@ -77,6 +79,9 @@ export default function HomeList() {
           </button>
           <button className="button button-filled" onClick={() => handleSort('title', 'desc')}>
             Sort by Title (Descending)
+          </button>
+          <button className="button button-filled" onClick={() => handleAddBook(newBook)}>
+            Add book
           </button>
         </div>
       </div>

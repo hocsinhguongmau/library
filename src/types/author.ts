@@ -1,5 +1,5 @@
 export interface iAuthor {
-  id: number
+  id: string
   picture: string
   name: string
   description: string

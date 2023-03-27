@@ -1,5 +1,5 @@
 export interface iPublisher {
-  id: number
+  id: string
   name: string
   description: string
 }

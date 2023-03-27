@@ -1,152 +1,52 @@
 [
   {
-    "id": 1,
+    "id": "1",
     "picture": "https://picsum.photos/id/1001/200/200.webp",
     "name": "Louisa Calderon"
   },
   {
-    "id": 2,
+    "id": "2",
     "picture": "https://picsum.photos/id/1002/200/200.webp",
     "name": "Hampton Kennedy"
   },
   {
-    "id": 3,
+    "id": "3",
     "picture": "https://picsum.photos/id/1003/200/200.webp",
     "name": "Atkinson Duncan"
   },
   {
-    "id": 4,
+    "id": "4",
     "picture": "https://picsum.photos/id/1004/200/200.webp",
     "name": "Erica Glover"
   },
   {
-    "id": 5,
+    "id": "5",
     "picture": "https://picsum.photos/id/1005/200/200.webp",
     "name": "Christian Ramsey"
   },
   {
-    "id": 6,
+    "id": "6",
     "picture": "https://picsum.photos/id/1006/200/200.webp",
     "name": "Perez Schneider"
   },
   {
-    "id": 7,
+    "id": "7",
     "picture": "https://picsum.photos/id/1007/200/200.webp",
     "name": "Jewel Anderson"
   },
   {
-    "id": 8,
+    "id": "8",
     "picture": "https://picsum.photos/id/1008/200/200.webp",
     "name": "Santiago Pitts"
   },
   {
-    "id": 9,
+    "id": "9",
     "picture": "https://picsum.photos/id/1009/200/200.webp",
     "name": "Barry Frederick"
   },
   {
-    "id": 10,
+    "id": "10",
     "picture": "https://picsum.photos/id/1010/200/200.webp",
     "name": "Tracy Kirkland"
-  },
-  {
-    "id": 11,
-    "picture": "https://picsum.photos/id/1011/200/200.webp",
-    "name": "Eunice Sutton"
-  },
-  {
-    "id": 12,
-    "picture": "https://picsum.photos/id/1012/200/200.webp",
-    "name": "Oneil Butler"
-  },
-  {
-    "id": 13,
-    "picture": "https://picsum.photos/id/1013/200/200.webp",
-    "name": "Rosella Bridges"
-  },
-  {
-    "id": 14,
-    "picture": "https://picsum.photos/id/1014/200/200.webp",
-    "name": "Warren Stevenson"
-  },
-  {
-    "id": 15,
-    "picture": "https://picsum.photos/id/1015/200/200.webp",
-    "name": "Heidi Santana"
-  },
-  {
-    "id": 16,
-    "picture": "https://picsum.photos/id/1016/200/200.webp",
-    "name": "Le Patterson"
-  },
-  {
-    "id": 17,
-    "picture": "https://picsum.photos/id/1017/200/200.webp",
-    "name": "Natalia Holden"
-  },
-  {
-    "id": 18,
-    "picture": "https://picsum.photos/id/1018/200/200.webp",
-    "name": "Reilly Long"
-  },
-  {
-    "id": 19,
-    "picture": "https://picsum.photos/id/1019/200/200.webp",
-    "name": "Rodgers Barron"
-  },
-  {
-    "id": 20,
-    "picture": "https://picsum.photos/id/1020/200/200.webp",
-    "name": "Tia Campos"
-  },
-  {
-    "id": 21,
-    "picture": "https://picsum.photos/id/1021/200/200.webp",
-    "name": "Hope Elliott"
-  },
-  {
-    "id": 22,
-    "picture": "https://picsum.photos/id/1022/200/200.webp",
-    "name": "Casandra Stafford"
-  },
-  {
-    "id": 23,
-    "picture": "https://picsum.photos/id/1023/200/200.webp",
-    "name": "Woodard Manning"
-  },
-  {
-    "id": 24,
-    "picture": "https://picsum.photos/id/1024/200/200.webp",
-    "name": "Imelda Odom"
-  },
-  {
-    "id": 25,
-    "picture": "https://picsum.photos/id/1025/200/200.webp",
-    "name": "Stewart Underwood"
-  },
-  {
-    "id": 26,
-    "picture": "https://picsum.photos/id/1026/200/200.webp",
-    "name": "Lyons Boyle"
-  },
-  {
-    "id": 27,
-    "picture": "https://picsum.photos/id/1027/200/200.webp",
-    "name": "Hilary Woodward"
-  },
-  {
-    "id": 28,
-    "picture": "https://picsum.photos/id/1028/200/200.webp",
-    "name": "Stacey Wagner"
-  },
-  {
-    "id": 29,
-    "picture": "https://picsum.photos/id/1029/200/200.webp",
-    "name": "Rich Castillo"
-  },
-  {
-    "id": 30,
-    "picture": "https://picsum.photos/id/1030/200/200.webp",
-    "name": "Williams Ortega"
   }
 ]
