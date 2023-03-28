@@ -1,9 +1,13 @@
-export default function Search() {
+type Props = {
+  classes: string
+}
+
+export default function Search({ classes }: Props) {
   return (
     <div>
       <input
         type="text"
-        className="w-96"
+        className={classes}
         placeholder="Search our catalog"
         aria-label="Search our catalog"
       />

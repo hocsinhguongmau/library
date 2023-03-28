@@ -9,7 +9,7 @@ export default function Header() {
     <header>
       <div className="text-white bg-primary">
         <div className="container flex items-center justify-between px-4 py-2 mx-auto">
-          <Search aria-label="Search books, authors, or subjects" />
+          <Search aria-label="Search books, authors, or subjects" classes="w-96" />
           <div className="flex items-center gap-4" role="navigation">
             <div className="text-white">
               <Link to="/register" className="text-white">

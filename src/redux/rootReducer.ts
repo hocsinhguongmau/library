@@ -4,6 +4,9 @@ import { persistReducer } from 'redux-persist'
 
 import booksReducer from './features/book/booksSlice'
 import themeReducer from './features/theme/themeSlice'
+import authorsReducer from './features/author/authorsSlice'
+import categoriesReducer from './features/categories/categoriesSlice'
+import publishersReducer from './features/publishers/publishersSlice'
 
 const persistConfig = {
   key: 'root',
@@ -13,7 +16,10 @@ const persistConfig = {
 
 const rootReducer = combineReducers({
   theme: themeReducer,
-  books: booksReducer
+  books: booksReducer,
+  authors: authorsReducer,
+  categories: categoriesReducer,
+  publishers: publishersReducer
 })
 
 const persistedReducer = persistReducer(persistConfig, rootReducer)

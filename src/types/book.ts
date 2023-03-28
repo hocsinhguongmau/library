@@ -6,9 +6,9 @@ export interface iBook {
   title: string
   picture: string
   description: string
-  publisher: number
-  author: number
-  category: number
+  publisher: string
+  author: string
+  category: string
   status: BookStatus
   publishedDate: string
 }

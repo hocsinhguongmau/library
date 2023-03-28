@@ -1,14 +1,14 @@
-import Welcome from '@/components/Welcome/Welcome'
-import Intro from '@/components/Intro/Intro'
-import HomeList from '@/components/HomeList/HomeList'
-import NewsLetter from '@/components/NewsLetter/NewsLetter'
+import Welcome from '@/components/Welcome/'
+import Intro from '@/components/Intro/'
+import BookList from '@/components/BookList/'
+import NewsLetter from '@/components/NewsLetter/'
 
 export default function Home() {
   return (
     <>
       <Welcome />
       <Intro />
-      <HomeList />
+      <BookList />
       <NewsLetter />
     </>
   )

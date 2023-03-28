@@ -2,7 +2,7 @@ import Slider from 'react-slick'
 import { Link } from 'react-router-dom'
 
 import banners from '@/data/banners.json'
-import { bannerSettings } from '@/configs/bannerSettings'
+import { bannerSettings } from '@/configs/commonSettings'
 
 export default function Banner() {
   return (
