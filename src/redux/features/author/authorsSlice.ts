@@ -1,13 +1,9 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
+import { PayloadAction, createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 
-import { fetchAllAuthors } from '@/utils/backend-service/authors'
-import { iAuthor } from '@/types'
-
-interface AuthorsState {
-  authors: iAuthor[]
-  status: 'idle' | 'loading' | 'succeeded' | 'failed'
-  error: string | null
-}
+import { sortArrayByField } from '@/utils/frontend-service/'
+import { filterArrayBySearchTerm } from '@/utils/frontend-service/'
+import { fetchAllAuthors } from '@/utils/backend-service'
+import { AuthorsState, SearchOption, SortOption, UpdateType, iAuthor } from '@/types'
 
 const initialState: AuthorsState = {
   authors: [],
@@ -20,10 +16,40 @@ export const fetchAuthors = createAsyncThunk('authors/fetchAuthors', async () =>
   return data
 })
 
+export const addNewAuthor = createAsyncThunk<iAuthor, iAuthor>(
+  'authors/addNewAuthor',
+  async (newAuthor) => {
+    return newAuthor
+  }
+)
+
+export const removeAuthor = createAsyncThunk<string, string>('authors/removeAuthor', async (id) => {
+  return id
+})
+
+export const updateAuthor = createAsyncThunk<iAuthor, UpdateType<iAuthor>>(
+  'authors/updateAuthor',
+  async ({ newData, id }) => {
+    return { ...newData, id }
+  }
+)
+
 const authorsSlice = createSlice({
   name: 'authors',
   initialState,
-  reducers: {},
+  reducers: {
+    sortAuthors(state, action: PayloadAction<SortOption<iAuthor>>) {
+      const { field, order } = action.payload
+      sortArrayByField(state.authors, field, order)
+    },
+    searchAuthors(state, action: PayloadAction<SearchOption<iAuthor>>) {
+      const { searchTerm, keysToSearch } = action.payload
+      state.authors = filterArrayBySearchTerm(state.authors, searchTerm, keysToSearch)
+    },
+    resetAuthors(state) {
+      state.authors = initialState.authors
+    }
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchAuthors.pending, (state) => {
@@ -37,7 +63,23 @@ const authorsSlice = createSlice({
         state.status = 'failed'
         state.error = action.error.message || null
       })
+      .addCase(addNewAuthor.fulfilled, (state, action) => {
+        state.authors.push(action.payload)
+      })
+      .addCase(removeAuthor.fulfilled, (state, action) => {
+        const modifiedAuthors = state.authors.filter((author) => author.id !== action.payload)
+        state.authors = modifiedAuthors
+      })
+      .addCase(updateAuthor.fulfilled, (state, action) => {
+        const { id } = action.payload
+        const index = state.authors.findIndex((author: iAuthor) => author.id === id)
+        if (index !== -1) {
+          state.authors[index] = action.payload
+        }
+      })
   }
 })
+
+export const { sortAuthors, searchAuthors, resetAuthors } = authorsSlice.actions
 
 export default authorsSlice.reducer

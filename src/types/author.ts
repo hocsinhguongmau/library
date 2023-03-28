@@ -4,3 +4,9 @@ export interface iAuthor {
   name: string
   description: string
 }
+
+export interface AuthorsState {
+  authors: iAuthor[]
+  status: 'idle' | 'loading' | 'succeeded' | 'failed'
+  error: string | null
+}
