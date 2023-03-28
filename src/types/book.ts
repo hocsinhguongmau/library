@@ -15,6 +15,7 @@ export interface iBook {
 }
 
 export interface iBookWithAuthor extends iBook {
+  authorName: string | undefined
   authorInfo: iAuthor | undefined
 }
 
@@ -22,4 +23,17 @@ export interface BooksState {
   books: iBook[]
   status: 'idle' | 'loading' | 'succeeded' | 'failed'
   error: string | null
+}
+
+export type SortBookOption =
+  | 'title_asc'
+  | 'title_desc'
+  | 'author_asc'
+  | 'author_desc'
+  | 'date_asc'
+  | 'date_desc'
+
+export interface BookSortingOption {
+  label: string
+  value: string
 }

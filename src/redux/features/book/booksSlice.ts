@@ -34,6 +34,7 @@ export const updateBook = createAsyncThunk<iBook, UpdateType<iBook>>(
 const booksSlice = createSlice({
   name: 'books',
   initialState,
+  //No longer needed, I changed the sorting and filtering methods to use url params
   reducers: {
     sortBooks(state, action: PayloadAction<SortOption<iBook>>) {
       const { field, order } = action.payload
@@ -42,9 +43,6 @@ const booksSlice = createSlice({
     searchBooks(state, action: PayloadAction<SearchOption<iBook>>) {
       const { searchTerm, keysToSearch } = action.payload
       state.books = filterArrayBySearchTerm(state.books, searchTerm, keysToSearch)
-    },
-    resetBooks(state) {
-      state.books = initialState.books
     }
   },
   extraReducers: (builder) => {
@@ -77,6 +75,6 @@ const booksSlice = createSlice({
   }
 })
 
-export const { sortBooks, searchBooks, resetBooks } = booksSlice.actions
+export const { sortBooks, searchBooks } = booksSlice.actions
 
 export default booksSlice.reducer

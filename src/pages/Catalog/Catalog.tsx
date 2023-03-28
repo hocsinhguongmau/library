@@ -13,18 +13,25 @@ import Search from '@/components/Search/Search'
 import { paginationSettings } from '@/configs/commonSettings'
 import SideNav from '@/components/SideNav/'
 import { setBooks } from '@/redux/features/book/booksWithAuthors'
+import SortBook from '@/components/SortBook/SortBook'
+import { SortBookOption, iBookWithAuthor } from '@/types'
+import { sortArrayByField } from '@/utils/frontend-service'
 
 export default function Catalog() {
   const dispatch = useAppDispatch()
   const books = useSelector((state: RootState) => state.books.books)
   const authors = useSelector((state: RootState) => state.authors.authors)
-  const booksWithAuthor = useSelector((state: RootState) => state.booksWithAuthor.booksWithAuthor)
   const status = useSelector((state: RootState) => state.books.status)
+
+  const booksWithAuthor = useSelector((state: RootState) => state.booksWithAuthor.booksWithAuthor)
 
   const location = useLocation()
   const navigate = useNavigate()
+  const [sortedBooks, setSortedBooks] = useState<iBookWithAuthor[]>([])
 
   const pageNumber = Number(new URLSearchParams(location.search).get('page') ?? 1) - 1
+  const queryParams = new URLSearchParams(location.search)
+  const sortParams = queryParams.get('sorting') as SortBookOption | null
 
   useEffect(() => {
     dispatch(fetchBooks())
@@ -35,10 +42,39 @@ export default function Catalog() {
     dispatch(setBooks({ books, authors }))
   }, [books, authors])
 
+  const sortBooksBy = (booksWithAuthor: iBookWithAuthor[], sorting: SortBookOption) => {
+    switch (sorting) {
+      case 'title_asc':
+        return sortArrayByField([...booksWithAuthor], 'title', 'asc')
+      case 'title_desc':
+        return sortArrayByField([...booksWithAuthor], 'title', 'desc')
+      case 'author_asc':
+        return sortArrayByField([...booksWithAuthor], 'authorName', 'asc')
+      case 'author_desc':
+        return sortArrayByField([...booksWithAuthor], 'authorName', 'desc')
+      case 'date_asc':
+        return sortArrayByField([...booksWithAuthor], 'publishedDate', 'asc')
+      case 'date_desc':
+        return sortArrayByField([...booksWithAuthor], 'publishedDate', 'desc')
+      default:
+        return booksWithAuthor
+    }
+  }
+
+  useEffect(() => {
+    if (sortParams && booksWithAuthor.length > 0) {
+      const sorted = sortBooksBy(booksWithAuthor, sortParams)
+      setSortedBooks(sorted)
+    }
+  }, [sortParams, booksWithAuthor])
+
   function handlePageClick({ selected }: { selected: number }) {
     setCurrentPage(selected)
+
+    const queryParams = new URLSearchParams(location.search)
+    queryParams.set('page', (selected + 1).toString())
     navigate({
-      search: queryString.stringify({ page: selected + 1 })
+      search: queryParams.toString()
     })
   }
 
@@ -55,7 +91,7 @@ export default function Catalog() {
   const pageCount = Math.ceil(booksWithAuthor.length / booksPerPage)
 
   const startIndex = currentPage * booksPerPage
-  const displayedBooks = booksWithAuthor.slice(startIndex, startIndex + booksPerPage)
+  const displayedBooks = sortedBooks.slice(startIndex, startIndex + booksPerPage)
 
   return (
     <section className="container grid grid-cols-4 gap-8 mx-auto">
@@ -69,15 +105,7 @@ export default function Catalog() {
         <div className="flex items-center justify-between w-full px-4 mt-8">
           <Search classes=" w-1/2 min-w-96 block" />
           <div className="flex items-center gap-4">
-            <label htmlFor="sorting">Sort by</label>
-            <select id="sorting">
-              <option value="">Title asc</option>
-              <option value="">Title desc</option>
-              <option value="">Author asc</option>
-              <option value="">Title asc</option>
-              <option value="">Title asc</option>
-              <option value="">Title asc</option>
-            </select>
+            <SortBook />
           </div>
         </div>
         {status === 'loading' ? <Loading classes="pt-8" /> : null}

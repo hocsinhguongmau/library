@@ -16,10 +16,14 @@ const booksWithAuthorSlice = createSlice({
   initialState,
   reducers: {
     setBooks: (state, action: PayloadAction<{ books: iBook[]; authors: iAuthor[] }>) => {
-      state.booksWithAuthor = action.payload.books.map((book) => ({
-        ...book,
-        authorInfo: action.payload.authors.find((author) => author.id === book.author)
-      }))
+      state.booksWithAuthor = action.payload.books.map((book) => {
+        const author = action.payload.authors.find((author) => author.id === book.author)
+        return {
+          ...book,
+          authorName: author?.name,
+          authorInfo: author
+        }
+      })
     }
   }
 })
