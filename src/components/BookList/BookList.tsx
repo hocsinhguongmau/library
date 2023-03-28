@@ -7,10 +7,13 @@ import { fetchBooks } from '@/redux/features/book/booksSlice'
 import Loading from '@/components/Loading'
 import BookListItem from '@/components/BookListItem'
 import { fetchAuthors } from '@/redux/features/author/authorsSlice'
+import { setBooks } from '@/redux/features/book/booksWithAuthors'
 
 export default function HomeList() {
   const dispatch = useAppDispatch()
   const books = useSelector((state: RootState) => state.books.books)
+  const authors = useSelector((state: RootState) => state.authors.authors)
+  const booksWithAuthor = useSelector((state: RootState) => state.booksWithAuthor.booksWithAuthor)
   const status = useSelector((state: RootState) => state.books.status)
 
   // const newBook: iBook = {
@@ -50,11 +53,12 @@ export default function HomeList() {
 
   useEffect(() => {
     dispatch(fetchBooks())
+    dispatch(fetchAuthors())
   }, [])
 
   useEffect(() => {
-    dispatch(fetchAuthors())
-  }, [])
+    dispatch(setBooks({ books, authors }))
+  }, [books, authors])
 
   return (
     <section>
@@ -65,7 +69,7 @@ export default function HomeList() {
         </h3>
         {status === 'loading' ? <Loading classes="pt-8" /> : null}
         <div className="grid grid-cols-4 gap-8 mt-8">
-          {books.slice(0, 4).map((book) => (
+          {booksWithAuthor.slice(0, 4).map((book) => (
             <BookListItem {...book} key={book.id} />
           ))}
         </div>

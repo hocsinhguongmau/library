@@ -11,10 +11,14 @@ import BookListItem from '@/components/BookListItem'
 import { fetchAuthors } from '@/redux/features/author/authorsSlice'
 import Search from '@/components/Search/Search'
 import { paginationSettings } from '@/configs/commonSettings'
+import SideNav from '@/components/SideNav/'
+import { setBooks } from '@/redux/features/book/booksWithAuthors'
 
 export default function Catalog() {
   const dispatch = useAppDispatch()
   const books = useSelector((state: RootState) => state.books.books)
+  const authors = useSelector((state: RootState) => state.authors.authors)
+  const booksWithAuthor = useSelector((state: RootState) => state.booksWithAuthor.booksWithAuthor)
   const status = useSelector((state: RootState) => state.books.status)
 
   const location = useLocation()
@@ -24,11 +28,12 @@ export default function Catalog() {
 
   useEffect(() => {
     dispatch(fetchBooks())
+    dispatch(fetchAuthors())
   }, [])
 
   useEffect(() => {
-    dispatch(fetchAuthors())
-  }, [])
+    dispatch(setBooks({ books, authors }))
+  }, [books, authors])
 
   function handlePageClick({ selected }: { selected: number }) {
     setCurrentPage(selected)
@@ -47,17 +52,34 @@ export default function Catalog() {
 
   const [currentPage, setCurrentPage] = useState<number>(0)
   const booksPerPage = 8
-  const pageCount = Math.ceil(books.length / booksPerPage)
+  const pageCount = Math.ceil(booksWithAuthor.length / booksPerPage)
 
   const startIndex = currentPage * booksPerPage
-  const displayedBooks = books.slice(startIndex, startIndex + booksPerPage)
+  const displayedBooks = booksWithAuthor.slice(startIndex, startIndex + booksPerPage)
 
   return (
     <section className="container grid grid-cols-4 gap-8 mx-auto">
-      <div className="border border-primary">navbar</div>
+      <SideNav />
       <div className="col-span-3">
         <h1 className="text-2xl text-center uppercase text-primary">BOOKS, MAGAZINES & MOVIES</h1>
-        <Search classes=" mt-8 w-1/2 min-w-96 block mx-auto" />
+        <h2 className="block max-w-3xl mx-auto text-xl italic leading-6 text-center text-secondary">
+          Discover a vast collection of books, magazines, and movies available for download and
+          streaming at your fingertips.
+        </h2>
+        <div className="flex items-center justify-between w-full px-4 mt-8">
+          <Search classes=" w-1/2 min-w-96 block" />
+          <div className="flex items-center gap-4">
+            <label htmlFor="sorting">Sort by</label>
+            <select id="sorting">
+              <option value="">Title asc</option>
+              <option value="">Title desc</option>
+              <option value="">Author asc</option>
+              <option value="">Title asc</option>
+              <option value="">Title asc</option>
+              <option value="">Title asc</option>
+            </select>
+          </div>
+        </div>
         {status === 'loading' ? <Loading classes="pt-8" /> : null}
         <div className="grid grid-cols-4 gap-8 mt-8">
           {displayedBooks.map((book) => (

@@ -7,6 +7,7 @@ import themeReducer from './features/theme/themeSlice'
 import authorsReducer from './features/author/authorsSlice'
 import categoriesReducer from './features/categories/categoriesSlice'
 import publishersReducer from './features/publishers/publishersSlice'
+import booksWithAuthorReducer from './features/book/booksWithAuthors'
 
 const persistConfig = {
   key: 'root',
@@ -18,6 +19,7 @@ const rootReducer = combineReducers({
   theme: themeReducer,
   books: booksReducer,
   authors: authorsReducer,
+  booksWithAuthor: booksWithAuthorReducer,
   categories: categoriesReducer,
   publishers: publishersReducer
 })

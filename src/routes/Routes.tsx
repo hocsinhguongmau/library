@@ -6,7 +6,7 @@ import Catalog from '@/pages/Catalog'
 import BookDetail from '@/pages/BookDetail/'
 import Author from '@/pages/Author'
 import CatalogDetail from '@/pages/CatalogDetail/CatalogDetail'
-import AuthorDetail from '@/pages/Detail/AuthorDetail'
+import AuthorDetail from '@/pages/AuthorDetail/AuthorDetail'
 import Admin from '@/admin/pages/Admin/Admin'
 import Layout from '@/components/Layout/Layout'
 

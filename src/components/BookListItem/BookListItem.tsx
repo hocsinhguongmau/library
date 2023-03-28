@@ -1,11 +1,8 @@
 import { Link } from 'react-router-dom'
 
-import { iBook } from '@/types'
-import { RootState } from '@/redux/store'
-import { useSelector } from 'react-redux'
-import { filterArrayBySearchTerm } from '@/utils/frontend-service'
+import { iBookWithAuthor } from '@/types'
 
-export default function BookListItem({ id, picture, title, author }: iBook) {
+export default function BookListItem({ id, picture, title, authorInfo }: iBookWithAuthor) {
   // const bookChange: Omit<iBook, 'id'> = {
   //   picture: 'https://picsum.photos/id/3/200/300.webp',
   //   isbn: '9789-0-6-0',
@@ -27,22 +24,18 @@ export default function BookListItem({ id, picture, title, author }: iBook) {
   //   dispatch(updateBook({ id, newData }))
   // }
 
-  //Get author info
-  const authors = useSelector((state: RootState) => state.authors.authors)
-  const authorItem = filterArrayBySearchTerm(authors, author, ['id'])
-
   return (
     <div key={id}>
-      <Link to={`book/${id}`} className="block px-4">
+      <Link to={`/book/${id}`} className="block px-4">
         <img src={picture} alt={title} width={200} height={300} className="w-full" />
       </Link>
       <h4 className="mt-4 text-xl font-bold text-center capitalize">
-        <Link to={`book/${id}`}>{title}</Link>
+        <Link to={`/book/${id}`}>{title}</Link>
       </h4>
-      {authorItem.length > 0 ? (
+      {authorInfo ? (
         <h4 className="italic text-center">
-          <Link className="capitalize text-secondary" to={`/author/${authorItem[0].id}`}>
-            {authorItem[0].name}
+          <Link className="capitalize text-secondary" to={`/author/${authorInfo.id}`}>
+            {authorInfo.name}
           </Link>
         </h4>
       ) : null}

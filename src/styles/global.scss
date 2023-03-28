@@ -114,6 +114,7 @@ a {
   @apply px-4 py-2 rounded;
 }
 
+select,
 input[type='text'] {
   @apply border border-primary outline-none focus:border-secondary bg-accent text-text px-2 py-2;
   &.input-large {

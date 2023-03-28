@@ -1,3 +1,4 @@
+import { iAuthor } from '@/types'
 type BookStatus = 'available' | 'borrowed'
 
 export interface iBook {
@@ -11,6 +12,10 @@ export interface iBook {
   category: string
   status: BookStatus
   publishedDate: string
+}
+
+export interface iBookWithAuthor extends iBook {
+  authorInfo: iAuthor | undefined
 }
 
 export interface BooksState {
