@@ -20,7 +20,6 @@ export const sortArrayByField = <T, K extends keyof T>(data: T[], sortBy: K, ord
   return data.sort((a, b) => {
     const aValue = a[sortBy]
     const bValue = b[sortBy]
-    console.log(aValue, bValue)
     if (aValue === undefined || aValue === null) {
       return order === 'asc' ? -1 : 1
     } else if (bValue === undefined || bValue === null) {

@@ -1,44 +1,54 @@
 import { NavItem } from '@/types/Common'
 import NavLink from './NavLink'
-
-const navigation: NavItem[] = [
-  {
-    title: 'use the library',
-    url: '/',
-    child: [
-      {
-        title: 'gets a card',
-        url: '/'
-      },
-      {
-        title: 'access to your account',
-        url: '/'
-      }
-    ]
-  },
-  {
-    title: 'BOOKS & MEDIA',
-    url: '/'
-  },
-  {
-    title: 'PROGRAMS',
-    url: '/'
-  },
-  {
-    title: 'EVENT CALENDAR',
-    url: '/'
-  },
-  {
-    title: 'LOCATIONS',
-    url: '/'
-  },
-  {
-    title: 'ABOUT',
-    url: '/'
-  }
-]
+import { useEffect } from 'react'
+import { RootState, useAppDispatch } from '@/redux/store'
+import { fetchCategories } from '@/redux/features/categories/categoriesSlice'
+import { useSelector } from 'react-redux'
 
 export default function Navigation() {
+  const dispatch = useAppDispatch()
+  const categories = useSelector((state: RootState) => state.categories.categories)
+  useEffect(() => {
+    dispatch(fetchCategories())
+  }, [])
+  console.log(categories)
+
+  const categoryNavChild = categories.map((category) => ({
+    title: category.title,
+    url: `/category/${category.id}`
+  }))
+  const navigation: NavItem[] = [
+    {
+      title: 'Home',
+      url: '/'
+    },
+    {
+      title: 'Categories',
+      url: '/categories',
+      child: categoryNavChild
+    },
+    {
+      title: 'catalog',
+      url: '/catalog'
+    },
+    {
+      title: 'author',
+      url: '/author'
+    },
+    {
+      title: 'publisher',
+      url: '/publisher'
+    },
+    {
+      title: 'LOCATIONS',
+      url: '/'
+    },
+    {
+      title: 'ABOUT',
+      url: '/'
+    }
+  ]
+
   return (
     <nav className="container px-4 mx-auto ">
       <ul className="flex justify-between border-b-2 border-primary">

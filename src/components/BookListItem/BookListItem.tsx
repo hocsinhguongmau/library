@@ -2,13 +2,7 @@ import { Link } from 'react-router-dom'
 
 import { iBookWithAuthor } from '@/types'
 
-export default function BookListItem({
-  id,
-  picture,
-  title,
-  authorName,
-  authorInfo
-}: iBookWithAuthor) {
+export default function BookListItem({ id, picture, title, authorInfo }: iBookWithAuthor) {
   // const bookChange: Omit<iBook, 'id'> = {
   //   picture: 'https://picsum.photos/id/3/200/300.webp',
   //   isbn: '9789-0-6-0',
@@ -41,7 +35,7 @@ export default function BookListItem({
       {authorInfo ? (
         <h4 className="italic text-center">
           <Link className="capitalize text-secondary" to={`/author/${authorInfo.id}`}>
-            {authorName}
+            {authorInfo.name}
           </Link>
         </h4>
       ) : null}
