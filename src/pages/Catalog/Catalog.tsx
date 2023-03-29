@@ -62,6 +62,10 @@ export default function Catalog() {
   }
 
   useEffect(() => {
+    setSortedBooks(booksWithAuthor)
+  }, [booksWithAuthor])
+
+  useEffect(() => {
     if (sortParams && booksWithAuthor.length > 0) {
       const sorted = sortBooksBy(booksWithAuthor, sortParams)
       setSortedBooks(sorted)

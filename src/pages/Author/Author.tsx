@@ -7,8 +7,6 @@ export default function Author() {
   // const dispatch = useAppDispatch()
   const authors = useSelector((state: RootState) => state.authors.authors)
 
-  console.log(authors)
-
   // useEffect(() => {
   //   dispatch(fetchAuthors())
   // }, [])

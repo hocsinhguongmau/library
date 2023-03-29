@@ -11,7 +11,6 @@ export default function Navigation() {
   useEffect(() => {
     dispatch(fetchCategories())
   }, [])
-  console.log(categories)
 
   const categoryNavChild = categories.map((category) => ({
     title: category.title,

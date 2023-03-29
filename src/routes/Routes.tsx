@@ -9,6 +9,8 @@ import CatalogDetail from '@/pages/CatalogDetail/CatalogDetail'
 import AuthorDetail from '@/pages/AuthorDetail/AuthorDetail'
 import Admin from '@/admin/pages/Admin/Admin'
 import Layout from '@/components/Layout/Layout'
+import Categories from '@/pages/Categories/Categories'
+import CategoryDetail from '@/pages/CategoryDetail/CategoryDetail'
 
 const Routes = () => {
   return (
@@ -60,6 +62,22 @@ const Routes = () => {
         element={
           <Layout>
             <AuthorDetail />
+          </Layout>
+        }
+      />
+      <Route
+        path="/categories"
+        element={
+          <Layout>
+            <Categories />
+          </Layout>
+        }
+      />
+      <Route
+        path="/category/:id"
+        element={
+          <Layout>
+            <CategoryDetail />
           </Layout>
         }
       />
