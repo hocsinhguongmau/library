@@ -6,13 +6,13 @@ export const fetchAllAuthors = async () => {
   return response.data
 }
 
-// export const addAuthorFunction = async (author: iAuthor) => {
+// export const addAuthorFunction = async (author: IAuthor) => {
 //   const response = await axios.post(`${BACKEND_API_URL}/authors.json`, author)
 //   console.log('author is added', author)
 //   return response.data
 // }
 
-// export const updateAuthorFunction = async (id: number, author: iAuthor) => {
+// export const updateAuthorFunction = async (id: number, author: IAuthor) => {
 //   const response = await axios.put(`${BACKEND_API_URL}/authors.json`, author)
 //   console.log(`author ${id} is updated`, author)
 //   return response.data

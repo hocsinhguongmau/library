@@ -11,6 +11,7 @@ import Admin from '@/admin/pages/Admin/Admin'
 import Layout from '@/components/Layout/Layout'
 import Categories from '@/pages/Categories/Categories'
 import CategoryDetail from '@/pages/CategoryDetail/CategoryDetail'
+import Login from '@/pages/Login/'
 
 const Routes = () => {
   return (
@@ -78,6 +79,14 @@ const Routes = () => {
         element={
           <Layout>
             <CategoryDetail />
+          </Layout>
+        }
+      />
+      <Route
+        path="/login"
+        element={
+          <Layout>
+            <Login />
           </Layout>
         }
       />

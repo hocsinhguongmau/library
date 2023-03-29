@@ -12,7 +12,7 @@ module.exports = {
         accent: '#F0F0F0',
         background: '#fff',
         text: '#333',
-        success: '#FFD700',
+        success: '#28a745',
         error: '#FF5733',
         warning: '#FFA500'
       },

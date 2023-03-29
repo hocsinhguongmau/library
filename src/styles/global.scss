@@ -115,7 +115,8 @@ a {
 }
 
 select,
-input[type='text'] {
+input[type='text'],
+input[type='password'] {
   @apply border border-primary outline-none focus:border-secondary bg-accent text-text px-2 py-2;
   &.input-large {
     @apply px-4 pt-4 pb-3.5;
@@ -185,5 +186,12 @@ section {
   to {
     opacity: 0.1;
     transform: translateY(-10px);
+  }
+}
+
+.nav-link {
+  @apply block font-bold text-center uppercase text-text group-hover:text-primary;
+  &.active {
+    @apply text-primary;
   }
 }

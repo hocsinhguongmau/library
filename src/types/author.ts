@@ -1,4 +1,4 @@
-export interface iAuthor {
+export interface IAuthor {
   id: string
   picture: string
   name: string
@@ -6,7 +6,7 @@ export interface iAuthor {
 }
 
 export interface AuthorsState {
-  authors: iAuthor[]
+  authors: IAuthor[]
   status: 'idle' | 'loading' | 'succeeded' | 'failed'
   error: string | null
 }

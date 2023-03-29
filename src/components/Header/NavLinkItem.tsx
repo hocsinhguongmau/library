@@ -1,18 +1,18 @@
-import { Link } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import { RxCaretDown } from 'react-icons/rx'
 
 import { NavItem } from '@/types/Common'
 
-export default function NavLink({ title, url, child }: NavItem) {
+export default function NavLinkItem({ title, url, child }: NavItem) {
   return (
     <li className="relative z-10 w-full p-4 group max-w-[20%]">
-      <Link
+      <NavLink
         to={url}
-        className="block font-bold text-center uppercase text-text group-hover:text-primary"
+        className={({ isActive }) => (isActive ? 'active nav-link' : 'nav-link')}
         aria-label={title}
         aria-haspopup={child ? true : undefined}>
         {title}
-      </Link>
+      </NavLink>
       {child && (
         <div
           className="absolute left-0 hidden w-full bg-primary top-full group-hover:block"

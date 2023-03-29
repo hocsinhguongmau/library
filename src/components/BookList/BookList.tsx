@@ -16,7 +16,7 @@ export default function HomeList() {
   const booksWithAuthor = useSelector((state: RootState) => state.booksWithAuthor.booksWithAuthor)
   const status = useSelector((state: RootState) => state.books.status)
 
-  // const newBook: iBook = {
+  // const newBook: IBook = {
   //   id: uuidv4(),
   //   picture: 'https://picsum.photos/id/19/200/300.webp',
   //   isbn: '9780-9-0-9',
@@ -41,11 +41,11 @@ export default function HomeList() {
   //   },
   //   [dispatch]
   // )
-  // const handleAddBook = (book: iBook) => {
+  // const handleAddBook = (book: IBook) => {
   //   dispatch(addNewBook(book))
   // }
   // const handleSort = useCallback(
-  //   (field: keyof iBook, order: 'asc' | 'desc') => {
+  //   (field: keyof IBook, order: 'asc' | 'desc') => {
   //     dispatch(sortBooks({ field, order }))
   //   },
   //   [dispatch]

@@ -9,12 +9,10 @@ import { fetchBooks } from '@/redux/features/book/booksSlice'
 import Loading from '@/components/Loading'
 import BookListItem from '@/components/BookListItem'
 import { fetchAuthors } from '@/redux/features/author/authorsSlice'
-import Search from '@/components/Search/Search'
 import { paginationSettings } from '@/configs/commonSettings'
-import SideNav from '@/components/SideNav/'
 import { setBooks } from '@/redux/features/book/booksWithAuthors'
 import SortBook from '@/components/SortBook/SortBook'
-import { SortBookOption, iBookWithAuthor } from '@/types'
+import { FilterBookOption, SortBookOption, IBookWithAuthor } from '@/types'
 import { sortArrayByField } from '@/utils/frontend-service'
 
 export default function Catalog() {
@@ -27,11 +25,13 @@ export default function Catalog() {
 
   const location = useLocation()
   const navigate = useNavigate()
-  const [sortedBooks, setSortedBooks] = useState<iBookWithAuthor[]>([])
+  const [sortedBooks, setSortedBooks] = useState<IBookWithAuthor[]>([])
 
   const pageNumber = Number(new URLSearchParams(location.search).get('page') ?? 1) - 1
   const queryParams = new URLSearchParams(location.search)
   const sortParams = queryParams.get('sorting') as SortBookOption | null
+  const authorParams = queryParams.get('author') as FilterBookOption | null
+  const categoryParams = queryParams.get('category') as FilterBookOption | null
 
   useEffect(() => {
     dispatch(fetchBooks())
@@ -42,7 +42,7 @@ export default function Catalog() {
     dispatch(setBooks({ books, authors }))
   }, [books, authors])
 
-  const sortBooksBy = (booksWithAuthor: iBookWithAuthor[], sorting: SortBookOption) => {
+  const sortBooksBy = (booksWithAuthor: IBookWithAuthor[], sorting: SortBookOption) => {
     switch (sorting) {
       case 'title_asc':
         return sortArrayByField([...booksWithAuthor], 'title', 'asc')
@@ -99,15 +99,13 @@ export default function Catalog() {
 
   return (
     <section className="container grid grid-cols-4 gap-8 mx-auto">
-      <SideNav />
-      <div className="col-span-3">
+      <div className="col-span-4">
         <h1 className="text-2xl text-center uppercase text-primary">BOOKS, MAGAZINES & MOVIES</h1>
         <h2 className="block max-w-3xl mx-auto text-xl italic leading-6 text-center text-secondary">
           Discover a vast collection of books, magazines, and movies available for download and
           streaming at your fingertips.
         </h2>
-        <div className="flex items-center justify-between w-full px-4 mt-8">
-          <Search classes=" w-1/2 min-w-96 block" />
+        <div className="flex items-center justify-end w-full px-4 mt-8">
           <div className="flex items-center gap-4">
             <SortBook />
           </div>

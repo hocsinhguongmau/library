@@ -1,10 +1,10 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
-import { iBook, iBookWithAuthor } from '@/types/Book'
-import { iAuthor } from '@/types'
+import { IBook, IBookWithAuthor } from '@/types/Book'
+import { IAuthor } from '@/types'
 
 interface BooksWithAuthorState {
-  booksWithAuthor: iBookWithAuthor[]
+  booksWithAuthor: IBookWithAuthor[]
 }
 
 const initialState: BooksWithAuthorState = {
@@ -15,7 +15,7 @@ const booksWithAuthorSlice = createSlice({
   name: 'booksWithAuthor',
   initialState,
   reducers: {
-    setBooks: (state, action: PayloadAction<{ books: iBook[]; authors: iAuthor[] }>) => {
+    setBooks: (state, action: PayloadAction<{ books: IBook[]; authors: IAuthor[] }>) => {
       state.booksWithAuthor = action.payload.books.map((book) => {
         const author = action.payload.authors.find((author) => author.id === book.author)
         return {

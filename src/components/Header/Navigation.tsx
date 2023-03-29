@@ -1,9 +1,9 @@
 import { NavItem } from '@/types/Common'
-import NavLink from './NavLink'
-import { useEffect } from 'react'
 import { RootState, useAppDispatch } from '@/redux/store'
 import { fetchCategories } from '@/redux/features/categories/categoriesSlice'
 import { useSelector } from 'react-redux'
+import NavLinkItem from './NavLinkItem'
+import { useEffect } from 'react'
 
 export default function Navigation() {
   const dispatch = useAppDispatch()
@@ -40,11 +40,11 @@ export default function Navigation() {
     },
     {
       title: 'LOCATIONS',
-      url: '/'
+      url: '/locations'
     },
     {
       title: 'ABOUT',
-      url: '/'
+      url: '/about'
     }
   ]
 
@@ -52,7 +52,7 @@ export default function Navigation() {
     <nav className="container px-4 mx-auto ">
       <ul className="flex justify-between border-b-2 border-primary">
         {navigation.map((nav) => (
-          <NavLink {...nav} key={nav.title} />
+          <NavLinkItem {...nav} key={nav.title} />
         ))}
       </ul>
     </nav>

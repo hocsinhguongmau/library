@@ -1,7 +1,7 @@
-import { iAuthor } from '@/types'
+import { IAuthor } from '@/types'
 type BookStatus = 'available' | 'borrowed'
 
-export interface iBook {
+export interface IBook {
   id: string
   isbn: string
   title: string
@@ -14,13 +14,13 @@ export interface iBook {
   publishedDate: string
 }
 
-export interface iBookWithAuthor extends iBook {
+export interface IBookWithAuthor extends IBook {
   authorName: string | undefined
-  authorInfo: iAuthor | undefined
+  authorInfo: IAuthor | undefined
 }
 
 export interface BooksState {
-  books: iBook[]
+  books: IBook[]
   status: 'idle' | 'loading' | 'succeeded' | 'failed'
   error: string | null
 }
@@ -32,6 +32,8 @@ export type SortBookOption =
   | 'author_desc'
   | 'date_asc'
   | 'date_desc'
+
+export type FilterBookOption = 'author' | 'category' | 'available'
 
 export interface BookSortingOption {
   label: string

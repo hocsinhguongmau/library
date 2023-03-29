@@ -1,10 +1,10 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 
 import { fetchAllCategories } from '@/utils/backend-service/categories'
-import { iCategory } from '@/types'
+import { ICategory } from '@/types'
 
 interface CategoriesState {
-  categories: iCategory[]
+  categories: ICategory[]
   status: 'idle' | 'loading' | 'succeeded' | 'failed'
   error: string | null
 }

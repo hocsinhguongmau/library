@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom'
 
-import { iBookWithAuthor } from '@/types'
+import { IBookWithAuthor } from '@/types'
 
-export default function BookListItem({ id, picture, title, authorInfo }: iBookWithAuthor) {
-  // const bookChange: Omit<iBook, 'id'> = {
+export default function BookListItem({ id, picture, title, authorInfo }: IBookWithAuthor) {
+  // const bookChange: Omit<IBook, 'id'> = {
   //   picture: 'https://picsum.photos/id/3/200/300.webp',
   //   isbn: '9789-0-6-0',
   //   title: 'nulla fugiat sint',
@@ -20,7 +20,7 @@ export default function BookListItem({ id, picture, title, authorInfo }: iBookWi
   //   dispatch(removeBook(id))
   // }
 
-  // const handleUpdateBook = (id: string, newData: Omit<iBook, 'id'>) => {
+  // const handleUpdateBook = (id: string, newData: Omit<IBook, 'id'>) => {
   //   dispatch(updateBook({ id, newData }))
   // }
 

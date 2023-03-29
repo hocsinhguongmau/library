@@ -6,13 +6,13 @@ export const fetchAllBooks = async () => {
   return response.data
 }
 
-// export const addBookFunction = async (book: iBook) => {
+// export const addBookFunction = async (book: IBook) => {
 //   const response = await axios.post(`${BACKEND_API_URL}/books.json`, book)
 //   console.log('book is added', book)
 //   return response.data
 // }
 
-// export const updateBookFunction = async (id: number, book: iBook) => {
+// export const updateBookFunction = async (id: number, book: IBook) => {
 //   const response = await axios.put(`${BACKEND_API_URL}/books.json`, book)
 //   console.log(`book ${id} is updated`, book)
 //   return response.data

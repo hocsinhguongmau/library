@@ -3,7 +3,7 @@ import { PayloadAction, createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import { sortArrayByField } from '@/utils/frontend-service/'
 import { filterArrayBySearchTerm } from '@/utils/frontend-service/'
 import { fetchAllAuthors } from '@/utils/backend-service'
-import { AuthorsState, SearchOption, SortOption, UpdateType, iAuthor } from '@/types'
+import { AuthorsState, SearchOption, SortOption, UpdateType, IAuthor } from '@/types'
 
 const initialState: AuthorsState = {
   authors: [],
@@ -16,7 +16,7 @@ export const fetchAuthors = createAsyncThunk('authors/fetchAuthors', async () =>
   return data
 })
 
-export const addNewAuthor = createAsyncThunk<iAuthor, iAuthor>(
+export const addNewAuthor = createAsyncThunk<IAuthor, IAuthor>(
   'authors/addNewAuthor',
   async (newAuthor) => {
     return newAuthor
@@ -27,7 +27,7 @@ export const removeAuthor = createAsyncThunk<string, string>('authors/removeAuth
   return id
 })
 
-export const updateAuthor = createAsyncThunk<iAuthor, UpdateType<iAuthor>>(
+export const updateAuthor = createAsyncThunk<IAuthor, UpdateType<IAuthor>>(
   'authors/updateAuthor',
   async ({ newData, id }) => {
     return { ...newData, id }
@@ -38,11 +38,11 @@ const authorsSlice = createSlice({
   name: 'authors',
   initialState,
   reducers: {
-    sortAuthors(state, action: PayloadAction<SortOption<iAuthor>>) {
+    sortAuthors(state, action: PayloadAction<SortOption<IAuthor>>) {
       const { field, order } = action.payload
       sortArrayByField(state.authors, field, order)
     },
-    searchAuthors(state, action: PayloadAction<SearchOption<iAuthor>>) {
+    searchAuthors(state, action: PayloadAction<SearchOption<IAuthor>>) {
       const { searchTerm, keysToSearch } = action.payload
       state.authors = filterArrayBySearchTerm(state.authors, searchTerm, keysToSearch)
     },
@@ -72,7 +72,7 @@ const authorsSlice = createSlice({
       })
       .addCase(updateAuthor.fulfilled, (state, action) => {
         const { id } = action.payload
-        const index = state.authors.findIndex((author: iAuthor) => author.id === id)
+        const index = state.authors.findIndex((author: IAuthor) => author.id === id)
         if (index !== -1) {
           state.authors[index] = action.payload
         }

@@ -8,11 +8,12 @@ import authorsReducer from './features/author/authorsSlice'
 import categoriesReducer from './features/categories/categoriesSlice'
 import publishersReducer from './features/publishers/publishersSlice'
 import booksWithAuthorReducer from './features/book/booksWithAuthors'
+import authReducer from './features/auth/authSlice'
 
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: ['theme']
+  whitelist: ['theme', 'auth']
 }
 
 const rootReducer = combineReducers({
@@ -21,7 +22,8 @@ const rootReducer = combineReducers({
   authors: authorsReducer,
   booksWithAuthor: booksWithAuthorReducer,
   categories: categoriesReducer,
-  publishers: publishersReducer
+  publishers: publishersReducer,
+  auth: authReducer
 })
 
 const persistedReducer = persistReducer(persistConfig, rootReducer)
