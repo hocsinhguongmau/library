@@ -1,6 +1,6 @@
-export interface BorrowBook {
+export interface IBorrowBook {
   borrowerId: string
-  userId: string
+  username: string
   bookId: string
   borrowDate: string
   returnDate: string

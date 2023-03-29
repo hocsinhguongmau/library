@@ -14,6 +14,7 @@ import { setBooks } from '@/redux/features/book/booksWithAuthors'
 import SortBook from '@/components/SortBook/SortBook'
 import { FilterBookOption, SortBookOption, IBookWithAuthor } from '@/types'
 import { sortArrayByField } from '@/utils/frontend-service'
+import SideNav from '@/components/SideNav/SideNav'
 
 export default function Catalog() {
   const dispatch = useAppDispatch()
@@ -99,7 +100,8 @@ export default function Catalog() {
 
   return (
     <section className="container grid grid-cols-4 gap-8 mx-auto">
-      <div className="col-span-4">
+      <SideNav />
+      <div className="col-span-3">
         <h1 className="text-2xl text-center uppercase text-primary">BOOKS, MAGAZINES & MOVIES</h1>
         <h2 className="block max-w-3xl mx-auto text-xl italic leading-6 text-center text-secondary">
           Discover a vast collection of books, magazines, and movies available for download and

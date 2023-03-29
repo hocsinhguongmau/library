@@ -12,7 +12,7 @@ const SignInPage: React.FC = () => {
   const redirectUrl = searchParams.get('redirectUrl')
   const dispatch = useAppDispatch()
 
-  const { loading } = useSelector((state: RootState) => state.auth)
+  const { token, loading } = useSelector((state: RootState) => state.auth)
   const navigate = useNavigate()
   const onSubmit = (data: SignInFormData) => {
     dispatch(loginAsync(data))
@@ -21,6 +21,12 @@ const SignInPage: React.FC = () => {
 
   const onCancel = async () => {
     navigate(-1)
+  }
+
+  // Redirect to home page if user is already authenticated
+  if (token) {
+    console.log(token)
+    navigate(`${redirectUrl || '/'}`)
   }
 
   return (

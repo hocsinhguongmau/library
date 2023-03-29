@@ -5,13 +5,15 @@ import NotFound from '@/pages/NotFound'
 import Catalog from '@/pages/Catalog'
 import BookDetail from '@/pages/BookDetail/'
 import Author from '@/pages/Author'
-import CatalogDetail from '@/pages/CatalogDetail/CatalogDetail'
-import AuthorDetail from '@/pages/AuthorDetail/AuthorDetail'
-import Admin from '@/admin/pages/Admin/Admin'
-import Layout from '@/components/Layout/Layout'
-import Categories from '@/pages/Categories/Categories'
-import CategoryDetail from '@/pages/CategoryDetail/CategoryDetail'
+import CatalogDetail from '@/pages/CatalogDetail'
+import AuthorDetail from '@/pages/AuthorDetail'
+import Admin from '@/admin/pages/Admin'
+import Layout from '@/components/Layout'
+import Categories from '@/pages/Categories'
+import CategoryDetail from '@/pages/CategoryDetail'
 import Login from '@/pages/Login/'
+import Profile from '@/pages/Profile'
+import ProtectedRoute from './ProtectedRoute'
 
 const Routes = () => {
   return (
@@ -88,6 +90,16 @@ const Routes = () => {
           <Layout>
             <Login />
           </Layout>
+        }
+      />
+      <Route
+        path="/profile"
+        element={
+          <ProtectedRoute>
+            <Layout>
+              <Profile />
+            </Layout>
+          </ProtectedRoute>
         }
       />
       <Route

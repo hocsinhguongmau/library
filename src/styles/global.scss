@@ -110,10 +110,6 @@ a {
   }
 }
 
-.button {
-  @apply px-4 py-2 rounded;
-}
-
 select,
 input[type='text'],
 input[type='password'] {
@@ -166,6 +162,9 @@ section {
       @apply text-3xl;
     }
   }
+  &-secondary {
+    @apply bg-accent border-accent text-primary;
+  }
 }
 
 .bouncing-loader {
@@ -192,6 +191,6 @@ section {
 .nav-link {
   @apply block font-bold text-center uppercase text-text group-hover:text-primary;
   &.active {
-    @apply text-primary;
+    @apply text-secondary;
   }
 }
