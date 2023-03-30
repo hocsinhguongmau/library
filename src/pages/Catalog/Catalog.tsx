@@ -59,8 +59,8 @@ export default function Catalog() {
   }
 
   useEffect(() => {
-    setSortedBooks(booksWithAuthor)
-  }, [booksWithAuthor])
+    setSortedBooks(sortArrayByField([...booksWithAuthor], 'title', 'asc'))
+  }, [booksWithAuthor, location.search])
 
   useEffect(() => {
     if (sortParams && booksWithAuthor.length > 0) {
