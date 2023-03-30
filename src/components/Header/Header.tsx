@@ -21,7 +21,9 @@ export default function Header() {
           <div className="flex items-center gap-4" role="navigation">
             {token ? (
               <div className="flex items-center gap-4">
-                {name}{' '}
+                <Link to="/profile" className="text-white">
+                  {name}
+                </Link>{' '}
                 <button className="" onClick={handleLogout}>
                   Logout
                 </button>

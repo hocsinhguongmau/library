@@ -7,7 +7,7 @@ export default function Profile() {
   const redirectUrl = searchParams.get('redirectUrl')
   const dispatch = useAppDispatch()
 
-  const { token, loading } = useSelector((state: RootState) => state.auth)
+  const { token } = useSelector((state: RootState) => state.auth)
   const navigate = useNavigate()
 
   // Redirect to home page if user is already authenticated

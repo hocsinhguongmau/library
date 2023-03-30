@@ -2,7 +2,7 @@ import { removeBook, updateBook } from '@/redux/features/book/booksSlice'
 import { useAppDispatch } from '@/redux/store'
 import { IBook } from '@/types'
 
-export default function BookItem({ id, title, picture }: IBook) {
+export default function BookItem({ id, title, picture, publishedDate }: IBook) {
   const dispatch = useAppDispatch()
   const bookChange: Omit<IBook, 'id'> = {
     picture: 'https://picsum.photos/id/3/200/300.webp',
@@ -28,7 +28,8 @@ export default function BookItem({ id, title, picture }: IBook) {
   return (
     <div key={id} className="relative">
       <img src={picture} alt={title} width={200} height={300} className="w-full" />
-      <h4 className="mt-4 text-xl font-bold text-center capitalize">{title}</h4>
+      <h4 className="mt-4 text-xl font-bold capitalize">{title}</h4>
+      <p>Published date: {publishedDate}</p>
       <div className="flex gap-4 mt-4">
         <button className="button button-outlined" onClick={() => handleRemoveBook(id)}>
           Remove

@@ -1,10 +1,10 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 
 import { fetchAllPublishers } from '@/utils/backend-service/publishers'
-import { iPublisher } from '@/types'
+import { IPublisher } from '@/types'
 
 interface PublishersState {
-  publishers: iPublisher[]
+  publishers: IPublisher[]
   status: 'idle' | 'loading' | 'succeeded' | 'failed'
   error: string | null
 }

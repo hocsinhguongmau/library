@@ -5,15 +5,13 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 interface AuthState {
   token: string | null
   name: string
-  loading: boolean
-  error: string | null
+  status: string
 }
 
 const initialState: AuthState = {
   token: null,
   name: '',
-  loading: false,
-  error: null
+  status: ''
 }
 
 export const loginAsync = createAsyncThunk('auth/login', async (data: SignInFormData) => {
@@ -27,23 +25,20 @@ export const authSlice = createSlice({
   reducers: {
     logout: (state) => {
       state.token = null
-      state.name = ''
+      state.name = 'loading'
     }
   },
   extraReducers: (builder) => {
     builder
       .addCase(loginAsync.pending, (state) => {
-        state.loading = true
-        state.error = null
+        state.status = 'success'
       })
       .addCase(loginAsync.fulfilled, (state, action) => {
-        state.loading = false
-        state.token = action.payload?.token || 'asd'
-        state.name = action.payload?.name || 'asd'
+        state.token = action.payload?.token || null
+        state.name = action.payload?.name || ''
       })
-      .addCase(loginAsync.rejected, (state, action) => {
-        state.loading = false
-        state.error = action.error.message ?? 'Login failed'
+      .addCase(loginAsync.rejected, (state) => {
+        state.status = 'error'
       })
   }
 })
