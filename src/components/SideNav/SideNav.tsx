@@ -1,10 +1,11 @@
+import { useEffect } from 'react'
+import { useSelector } from 'react-redux'
+import { useLocation, useNavigate } from 'react-router-dom'
+
 import { fetchAuthors } from '@/redux/features/author/authorsSlice'
 import { fetchCategories } from '@/redux/features/categories/categoriesSlice'
 import { RootState, useAppDispatch } from '@/redux/store'
 import { FilterBookOption } from '@/types'
-import { useEffect } from 'react'
-import { useSelector } from 'react-redux'
-import { useLocation, useNavigate } from 'react-router-dom'
 
 export default function SideNav() {
   const dispatch = useAppDispatch()

@@ -1,9 +1,10 @@
+import { useEffect } from 'react'
+import { useSelector } from 'react-redux'
+
 import { NavItem } from '@/types/Common'
 import { RootState, useAppDispatch } from '@/redux/store'
 import { fetchCategories } from '@/redux/features/categories/categoriesSlice'
-import { useSelector } from 'react-redux'
 import NavLinkItem from './NavLinkItem'
-import { useEffect } from 'react'
 
 export default function Navigation() {
   const dispatch = useAppDispatch()

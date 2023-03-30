@@ -1,10 +1,9 @@
 import { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
-import { RootState, useAppDispatch } from '@/redux/store'
 import { useLocation, useNavigate } from 'react-router-dom'
 import ReactPaginate from 'react-paginate'
-import queryString from 'query-string'
 
+import { RootState, useAppDispatch } from '@/redux/store'
 import { fetchBooks } from '@/redux/features/book/booksSlice'
 import Loading from '@/components/Loading'
 import BookListItem from '@/components/BookListItem'
@@ -73,7 +72,6 @@ export default function Catalog() {
   function handlePageClick({ selected }: { selected: number }) {
     setCurrentPage(selected)
 
-    const queryParams = new URLSearchParams(location.search)
     queryParams.set('page', (selected + 1).toString())
     navigate({
       search: queryParams.toString()
@@ -81,9 +79,10 @@ export default function Catalog() {
   }
 
   useEffect(() => {
-    const params = queryString.parse(location.search)
-    const page = Number(params.page)
-    if (!isNaN(page)) {
+    const page = Number(queryParams.get('page'))
+    if (page === 0) {
+      setCurrentPage(page)
+    } else if (!isNaN(page)) {
       setCurrentPage(page - 1)
     }
   }, [location.search])

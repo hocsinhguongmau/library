@@ -1,3 +1,4 @@
+import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { v4 as uuidv4 } from 'uuid'
 
@@ -5,10 +6,16 @@ import { IBookWithAuthor } from '@/types'
 import { RootState, useAppDispatch } from '@/redux/store'
 import { borrowBook, returnBook } from '@/redux/features/borrow/borrowSlice'
 import { IBorrowBook } from '@/types/BorrowBook'
-import { useSelector } from 'react-redux'
 import { formatPublishedDate } from '@/utils/frontend-service'
 
-export default function BookListItem({ id, picture, title, status, authorInfo }: IBookWithAuthor) {
+export default function BookListItem({
+  id,
+  picture,
+  title,
+  status,
+  authorInfo,
+  publishedDate
+}: IBookWithAuthor) {
   const dispatch = useAppDispatch()
   const handleBorrow = (book: IBorrowBook) => {
     dispatch(borrowBook(book))
@@ -66,6 +73,7 @@ export default function BookListItem({ id, picture, title, status, authorInfo }:
           </Link>
         </h4>
       ) : null}
+      <p className="text-center">Published date: {publishedDate}</p>
     </div>
   )
 }

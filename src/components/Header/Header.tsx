@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 
 import Search from '@/components/Search'
 import ToggleDarkMode from '@/components/ToggleDarkMode'
 import Navigation from './Navigation'
-import { useSelector } from 'react-redux'
 import { RootState, useAppDispatch } from '@/redux/store'
 import { logout } from '@/redux/features/auth/authSlice'
 

@@ -1,6 +1,7 @@
-import { BookSortingOption, SortBookOption } from '@/types'
 import { ChangeEvent, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+
+import { BookSortingOption, SortBookOption } from '@/types'
 
 const sortingOptions: BookSortingOption[] = [
   { label: 'Title asc', value: 'title_asc' },

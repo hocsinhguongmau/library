@@ -2,7 +2,7 @@ import { useAppDispatch } from '@/redux/store'
 import { useState } from 'react'
 import { useForm, SubmitHandler } from 'react-hook-form'
 import { v4 as uuidv4 } from 'uuid'
-import 'react-calendar/dist/Calendar.css'
+
 import { addNewBook } from '@/redux/features/book/booksSlice'
 
 export default function AddBook() {
