@@ -103,7 +103,7 @@ export default function BookDetail() {
           Author: <Link to={`/author/${bookDetail.author}`}>{bookDetail.authorInfo?.name}</Link>
         </p>
 
-        {otherBooks ? (
+        {otherBooks && otherBooks.length > 0 ? (
           <>
             <p className="mt-2 text-2xl">Other books by this author:</p>
             <ul className="grid grid-cols-4 gap-4 mt-4">
