@@ -47,7 +47,7 @@ export default function BookDetail() {
     if (books.length > 0 && authors.length > 0) {
       setOtherBooks(books.filter((book) => book.id !== bookId && book.author === bookDetail.author))
     }
-  }, [books, authors])
+  }, [books, authors, bookId])
 
   useEffect(() => {
     dispatch(fetchBooks())
