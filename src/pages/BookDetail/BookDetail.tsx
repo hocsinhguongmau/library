@@ -104,11 +104,18 @@ export default function BookDetail() {
 
         {otherBooks ? (
           <>
-            <p className="mt-2">Other books by this author:</p>
-            <ul>
+            <p className="mt-2 text-2xl">Other books by this author:</p>
+            <ul className="grid grid-cols-4 gap-4 mt-4">
               {otherBooks.map((book) => (
                 <li key={book.id}>
-                  <Link to={`/book/${book.id}`}>{book.title}</Link>
+                  <p>
+                    <Link to={`/book/${book.id}`}>
+                      <img src={book.picture} alt={book.title} />
+                    </Link>
+                  </p>
+                  <p>
+                    <Link to={`/book/${book.id}`}>{book.title}</Link>
+                  </p>
                 </li>
               ))}
             </ul>
