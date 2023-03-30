@@ -16,5 +16,9 @@ export default function Profile() {
     navigate(`${redirectUrl || '/'}`)
   }
 
-  return <div>Profile</div>
+  return (
+    <div className="container p-8 mx-auto text-center">
+      This page contains books that user has borrowed
+    </div>
+  )
 }
