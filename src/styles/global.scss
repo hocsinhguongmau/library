@@ -194,3 +194,17 @@ section {
     @apply text-secondary;
   }
 }
+
+.form-row {
+  @apply flex gap-4 mt-4 first-of-type:mt-8;
+  > div {
+    @apply w-full;
+  }
+  label {
+    @apply w-32;
+  }
+  select,
+  input {
+    @apply w-full;
+  }
+}

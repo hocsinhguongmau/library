@@ -1,6 +1,6 @@
-import { IBorrowBook } from '@/types/BorrowBook'
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
+import { IBorrowBook } from '@/types/BorrowBook'
 interface BorrowState {
   borrows: IBorrowBook[]
 }

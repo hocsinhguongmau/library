@@ -1,10 +1,9 @@
 import { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
-import { RootState, useAppDispatch } from '@/redux/store'
 import { useLocation, useNavigate } from 'react-router-dom'
 import ReactPaginate from 'react-paginate'
-import queryString from 'query-string'
 
+import { RootState, useAppDispatch } from '@/redux/store'
 import { fetchBooks } from '@/redux/features/book/booksSlice'
 import Loading from '@/components/Loading'
 import BookListItem from '@/components/BookListItem'
@@ -12,9 +11,8 @@ import { fetchAuthors } from '@/redux/features/author/authorsSlice'
 import { paginationSettings } from '@/configs/commonSettings'
 import { setBooks } from '@/redux/features/book/booksWithAuthors'
 import SortBook from '@/components/SortBook/SortBook'
-import { FilterBookOption, SortBookOption, IBookWithAuthor } from '@/types'
+import { SortBookOption, IBookWithAuthor } from '@/types'
 import { sortArrayByField } from '@/utils/frontend-service'
-import SideNav from '@/components/SideNav/SideNav'
 
 export default function Catalog() {
   const dispatch = useAppDispatch()
@@ -31,8 +29,6 @@ export default function Catalog() {
   const pageNumber = Number(new URLSearchParams(location.search).get('page') ?? 1) - 1
   const queryParams = new URLSearchParams(location.search)
   const sortParams = queryParams.get('sorting') as SortBookOption | null
-  const authorParams = queryParams.get('author') as FilterBookOption | null
-  const categoryParams = queryParams.get('category') as FilterBookOption | null
 
   useEffect(() => {
     dispatch(fetchBooks())
@@ -76,7 +72,6 @@ export default function Catalog() {
   function handlePageClick({ selected }: { selected: number }) {
     setCurrentPage(selected)
 
-    const queryParams = new URLSearchParams(location.search)
     queryParams.set('page', (selected + 1).toString())
     navigate({
       search: queryParams.toString()
@@ -84,9 +79,10 @@ export default function Catalog() {
   }
 
   useEffect(() => {
-    const params = queryString.parse(location.search)
-    const page = Number(params.page)
-    if (!isNaN(page)) {
+    const page = Number(queryParams.get('page'))
+    if (page === 0) {
+      setCurrentPage(page)
+    } else if (!isNaN(page)) {
       setCurrentPage(page - 1)
     }
   }, [location.search])
@@ -100,8 +96,8 @@ export default function Catalog() {
 
   return (
     <section className="container grid grid-cols-4 gap-8 mx-auto">
-      <SideNav />
-      <div className="col-span-3">
+      {/* <SideNav /> */}
+      <div className="col-span-4">
         <h1 className="text-2xl text-center uppercase text-primary">BOOKS, MAGAZINES & MOVIES</h1>
         <h2 className="block max-w-3xl mx-auto text-xl italic leading-6 text-center text-secondary">
           Discover a vast collection of books, magazines, and movies available for download and

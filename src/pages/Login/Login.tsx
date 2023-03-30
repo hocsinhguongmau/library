@@ -1,8 +1,9 @@
 import React from 'react'
 import { useNavigate, useSearchParams } from 'react-router-dom'
+import { useSelector } from 'react-redux'
+
 import { SignInFormData } from '@/types'
 import LoginForm from '@/components/LoginForm/LoginForm'
-import { useSelector } from 'react-redux'
 import { RootState, useAppDispatch } from '@/redux/store'
 import { loginAsync } from '@/redux/features/auth/authSlice'
 

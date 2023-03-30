@@ -15,11 +15,10 @@ export const filterArrayBySearchTerm = <T>(
 }
 
 type OrderType = 'asc' | 'desc'
-
 export const sortArrayByField = <T, K extends keyof T>(data: T[], sortBy: K, order: OrderType) => {
   return data.sort((a, b) => {
-    const aValue = a[sortBy]
-    const bValue = b[sortBy]
+    const aValue = String(a[sortBy]).toLowerCase()
+    const bValue = String(b[sortBy]).toLowerCase()
     if (aValue === undefined || aValue === null) {
       return order === 'asc' ? -1 : 1
     } else if (bValue === undefined || bValue === null) {
