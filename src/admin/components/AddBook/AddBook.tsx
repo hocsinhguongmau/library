@@ -65,28 +65,34 @@ export default function AddBook() {
         </div>
         <div className="form-row">
           <label htmlFor="publisher">Publisher:</label>
-          <div>
-            <input type="text" id="publisher" {...register('publisher', { required: true })} />
-            <p className="mt-2 text-red-500">
-              {errors.publisher && <span>Publisher is required</span>}
-            </p>
-          </div>
+          <select id="publisher" {...register('publisher')}>
+            <option value="1">Penguin Random House</option>
+            <option value="2">HarperCollins</option>
+            <option value="3">Simon & Schuster</option>
+            <option value="4">Macmillan Publishers</option>
+          </select>
         </div>
         <div className="form-row">
           <label htmlFor="author">Author:</label>
-          <div>
-            <input type="text" id="author" {...register('author', { required: true })} />
-            <p className="mt-2 text-red-500">{errors.author && <span>Author is required</span>}</p>
-          </div>
+          <select id="author" {...register('author')}>
+            <option value="1">Louisa Calderon</option>
+            <option value="2">Hampton Kennedy</option>
+            <option value="3">Atkinson Duncan</option>
+            <option value="4">Erica Glover</option>
+            <option value="6">Christian Ramsey</option>
+          </select>
         </div>
         <div className="form-row">
           <label htmlFor="category">Category:</label>
-          <div>
-            <input type="text" id="category" {...register('category', { required: true })} />
-            <p className="mt-2 text-red-500">
-              {errors.category && <span>Category is required</span>}
-            </p>
-          </div>
+          <select id="category" {...register('category')}>
+            <option value="1">Fiction</option>
+            <option value="2">Non-Fiction</option>
+            <option value="3">Children</option>
+            <option value="4">Young Adult</option>
+            <option value="6">Science Fiction</option>
+            <option value="7">Fantasy</option>
+            <option value="8">Romance</option>
+          </select>
         </div>
         <div className="form-row">
           <label htmlFor="status">Status:</label>
